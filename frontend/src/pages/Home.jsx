@@ -6,11 +6,11 @@ const Home = () => {
     <div className='text-(--font-display) m-auto flex flex-col gap-[80px]'>
       <div className='flex lg:flex lg:flex-row items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
         <div className='flex-1'>
-          <div className='mx-[80px] flex flex-col gap-4 sm:mx-[40px] sm:gap-2'>
-            <h1 className='text-[70px] text-[#1d274e] font-extrabold leading-[78px] sm:text-[30px] sm:leading-8'>Do More with Nairaxi</h1>
-            <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Get an affordable ride service in minutes.</p>
-            <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Shop and have groceries delivered right to your door from your favorite stores.</p>
-            <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Send, Receive & Track items seamlessly  all on one platform.</p>
+          <div className='lg:mx-[80px] flex flex-col gap-4 sm:mx-[40px] sm:gap-2'>
+            <h1 className='lg:text-[70px] text-[#1d274e] font-extrabold lg:leading-[78px] sm:text-[30px] sm:leading-8'>Do More with Nairaxi</h1>
+            <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Get an affordable ride service in minutes.</p>
+            <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Shop and have groceries delivered right to your door from your favorite stores.</p>
+            <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Send, Receive & Track items seamlessly  all on one platform.</p>
           </div>
         </div>
         <div className='flex-1 sm:w-[100%]'>
@@ -21,7 +21,7 @@ const Home = () => {
         {
           dummy.map((item) => {
             return (
-              <div className='flex gap-3 flex-col items-center sm:px-[20px]'>
+              <div className='flex gap-3 flex-col items-center lg:p-0 sm:px-[20px]'>
                 <img src={item.img} className='w-[300px] object-cover sm:w-[150px]' alt="" />
                 <h1 className='text-[24px] font-bold text-[#1d274e] sm:text-[18px]'>{item.title}</h1>
                 <p className='text-[#868e96] text-center text-[16px] leading-[25px] sm:text-[16px]'>{item.desc}</p>
@@ -41,7 +41,7 @@ const Home = () => {
                 <div className='flex-1'>
                   <div className='lg:px-[120px] flex-1 flex flex-col gap-6 sm:px-[40px]'>
                     <h1 className='font-extrabold text-[46px] text-[#28a745] sm:text-[28px]'>{data.title}</h1>
-                    <p className='text-[#868e96] text-[19px] leading-[30px] sm:text-[16px]'>{data.desc}</p>               
+                    <p className='text-[#868e96] lg:text-[19px] leading-[30px] sm:text-[16px]'>{data.desc}</p>               
                   </div>
                 </div>
               </div>

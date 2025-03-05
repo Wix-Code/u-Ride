@@ -2,13 +2,13 @@ export const data = [
   {
     id: 1,
     desc: "The Nairaxi app offers the safest and easiest way to move in Abuja, with multiple travel options from our well trained driver partners. Share your ride detail with loved ones, and let them watch you arrive safely.",
-    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-car-renatls-vip-service.jpg.png",
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/affordable-ride-service.jpg",
     title: "MOVE"
   },
   {
     id: 2,
     desc: "The Nairaxi app offers the safest and easiest way to move in Abuja, with multiple travel options from our well trained driver partners. Share your ride detail with loved ones, and let them watch you arrive safely.",
-    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-car-renatls-vip-service.jpg.png",
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/grocery-shopping-by-nairaxi-1.jpg",
     title: "MOVE"
   },
   {
