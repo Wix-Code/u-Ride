@@ -6,7 +6,7 @@ const Home = () => {
     <div className='text-(--font-display) m-auto flex flex-col gap-[80px]'>
       <div className='flex lg:flex lg:flex-row items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
         <div className='flex-1'>
-          <div className='mx-[80px] flex flex-col gap-4 sm:mx-[20px] sm:gap-2'>
+          <div className='mx-[80px] flex flex-col gap-4 sm:mx-[40px] sm:gap-2'>
             <h1 className='text-[70px] text-[#1d274e] font-extrabold leading-[78px] sm:text-[30px] sm:leading-8'>Do More with Nairaxi</h1>
             <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Get an affordable ride service in minutes.</p>
             <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Shop and have groceries delivered right to your door from your favorite stores.</p>
