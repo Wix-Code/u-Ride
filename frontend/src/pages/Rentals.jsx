@@ -46,6 +46,15 @@ const Rentals = () => {
           })
         }
       </div>
+      <div className='flex flex-col justify-center items-center gap-5'>
+        <img src="https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg" width={650} alt='' />
+        <h1 className='text-[24px] font-bold text-[#1d274e]'>Luxury Car Rentals with Chauffeur</h1>
+        <p className='w-[800px] text-[16px] text-center text-[#343a40]'>Experience the pinnacle of luxury travel with Nairaxi’s exclusive Luxury Car Rentals with Chauffeur service. Elevate every journey to an unforgettable experience of sophistication, comfort, and style as you explore the vibrant landscapes of Nigeria.</p>
+        <p className='w-[800px] text-[16px] text-center text-[#343a40]'>With our extensive fleet of meticulously maintained luxury vehicles, including sedans, SUVs, and limousines, Nairaxi ensures that you travel in the epitome of elegance. Whether you’re attending a glamorous event, exploring the bustling streets of Lagos, or embarking on a scenic tour, our luxury car rentals with chauffeur service offer the perfect blend of opulence and convenience.</p>
+        <p className='w-[800px] text-[16px] text-center text-[#343a40]'>Our professional chauffeurs are the epitome of hospitality and professionalism, dedicated to providing you with a seamless and stress-free travel experience. With their expert navigation skills and commitment to excellence, you can sit back, relax, and enjoy the journey while we take care of every detail.</p>
+        <p className='w-[800px] text-[16px] text-center text-[#343a40]'>Nairaxi’s Luxury Car Rentals with Chauffeur service is the ultimate choice for discerning travelers who demand nothing but the best. Whether you’re a busy executive in need of reliable transportation for business meetings, or a couple celebrating a special occasion, our chauffeur-driven luxury cars ensure that you arrive in style, on time, and in complete comfort.</p>
+        <p className='w-[800px] text-[16px] text-center text-[#343a40]'>From the moment you step into one of our luxurious vehicles, you’ll be immersed in a world of unparalleled luxury and refinement. Our chauffeurs are trained to anticipate your every need, ensuring that your journey is not only luxurious but also personalized to your preferences.</p>
+      </div>
     </div>
   )
 }
