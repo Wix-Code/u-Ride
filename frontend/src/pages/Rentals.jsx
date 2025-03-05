@@ -1,4 +1,5 @@
 import React from 'react'
+import { cars } from '../utils/dumyData'
 
 const Rentals = () => {
   return (
@@ -24,6 +25,21 @@ const Rentals = () => {
           <p className='text-[#1d274e] font-bold text-[24px]'>Flexible Rentals</p>
           <p className='text-[#343a40] text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
         </div>
+      </div>
+      <div className='grid lg:grid-cols-4 lg:gap-20 max-w-[1100px] m-auto sm:grid-cols-2 sm:gap-3'>
+        {
+          cars.map((car) => {
+            return (
+              <div key={car.id} className='flex gap-2 flex-col items-center'>
+                <p className='text-[#343a40] text-[12px] uppercase'>{car.type}</p>
+                <img src={car.img} width={250} alt={car.name} />
+                <h2 className='text-[#1d274e] font-bold text-[20px]'>{car.title}</h2>
+                <p className='text-[#343a40] text-[16px]'>{car.description}</p>
+                <button className='py-1 bg-white border-[2px] px-4 border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   )
