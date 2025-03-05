@@ -73,3 +73,62 @@ export const links = [
     href: "/home",
   },
 ]
+
+export const cars = [
+  {
+    id: 1,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 2,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 3,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 4,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 5,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 6,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 7,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+  {
+    id: 8,
+    title: "Mercedes E-Class Hire",
+    type: "Business Class",
+    price: 40000,
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/10/nairaxi-range-rover-sports-series-hire.png",
+  },
+]

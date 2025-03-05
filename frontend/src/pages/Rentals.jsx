@@ -3,7 +3,7 @@ import React from 'react'
 const Rentals = () => {
   return (
     <div className='flex flex-col gap-20'>
-      <div className='h-[70vh] flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
+      <div className='h-[75vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
         <h1 className='text-[#FFFFFF] lg:text-[48px] lg:font-extrabold'>Luxury Car Rentals with Chauffeur</h1>
         <p className='text-[#FFFFFF] lg:text-[16px] lg:font-bold'>Airport Transfer, Private Car Hire Services in Abuja, Lagos, Kano, PH & All major cities in Nigeria
         </p>
