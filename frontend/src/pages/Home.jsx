@@ -4,13 +4,13 @@ import { data, dummy } from '../utils/dumyData'
 const Home = () => {
   return (
     <div className='text-(--font-display) m-auto flex flex-col gap-[80px]'>
-      <div className='flex items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
+      <div className='flex lg:flex lg:flex-row items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
         <div className='flex-1'>
-          <div className='mx-[80px] flex flex-col gap-4'>
-            <h1 className='text-[70px] text-[#1d274e] font-extrabold leading-[78px]'>Do More with Nairaxi</h1>
-            <p className='text-[22px] text-[#868e96]'>Get an affordable ride service in minutes.</p>
-            <p className='text-[22px] text-[#868e96]'>Shop and have groceries delivered right to your door from your favorite stores.</p>
-            <p className='text-[22px] text-[#868e96]'>Send, Receive & Track items seamlessly  all on one platform.</p>
+          <div className='mx-[80px] flex flex-col gap-4 sm:mx-[20px] sm:gap-2'>
+            <h1 className='text-[70px] text-[#1d274e] font-extrabold leading-[78px] sm:text-[30px] sm:leading-8'>Do More with Nairaxi</h1>
+            <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Get an affordable ride service in minutes.</p>
+            <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Shop and have groceries delivered right to your door from your favorite stores.</p>
+            <p className='text-[22px] text-[#868e96] sm:text-[16px]'>Send, Receive & Track items seamlessly  all on one platform.</p>
           </div>
         </div>
         <div className='flex-1'>
@@ -22,15 +22,15 @@ const Home = () => {
           dummy.map((item) => {
             return (
               <div className='flex gap-3 flex-col items-center'>
-                <img src={item.img} className='w-[300px] object-cover' alt="" />
-                <h1 className='text-[24px] font-bold text-[#1d274e]'>{item.title}</h1>
-                <p className='text-[#868e96] text-center text-[16px] leading-[25px]'>{item.desc}</p>
+                <img src={item.img} className='w-[300px] object-cover sm:w-[150px]' alt="" />
+                <h1 className='text-[24px] font-bold text-[#1d274e] sm:text-[18px]'>{item.title}</h1>
+                <p className='text-[#868e96] text-center text-[16px] leading-[25px] sm:text-[16px]'>{item.desc}</p>
               </div>
             )
           })
         }
       </div>
-      <div className='flex flex-col gap-[60px] sm:flex sm:flex-col sm:gap-4'>
+      <div className='flex flex-col lg:gap-[60px] sm:flex sm:flex-col sm:gap-6'>
         {
           data.map((data) => {
             return (
@@ -39,9 +39,9 @@ const Home = () => {
                   <img src={data.img} className='w-[100%] object-cover' alt="" />
                 </div>
                 <div className='flex-1'>
-                  <div className='lg:px-[120px] flex-1 flex flex-col gap-6 sm:px-[20px]'>
-                    <h1 className='font-extrabold text-[46px] text-[#28a745]'>{data.title}</h1>
-                    <p className='text-[#868e96] text-[19px] leading-[30px]'>{data.desc}</p>               
+                  <div className='lg:px-[120px] flex-1 flex flex-col gap-6 sm:px-[40px]'>
+                    <h1 className='font-extrabold text-[46px] text-[#28a745] sm:text-[28px]'>{data.title}</h1>
+                    <p className='text-[#868e96] text-[19px] leading-[30px] sm:text-[16px]'>{data.desc}</p>               
                   </div>
                 </div>
               </div>
