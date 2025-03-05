@@ -40,7 +40,7 @@ const Home = () => {
                 </div>
                 <div className='flex-1'>
                   <div className='lg:px-[120px] flex-1 flex flex-col gap-6 sm:px-[40px]'>
-                    <h1 className='font-extrabold text-[46px] text-[#28a745] sm:text-[28px]'>{data.title}</h1>
+                    <h1 className='font-extrabold lg:text-[46px] text-[#28a745] sm:text-[28px]'>{data.title}</h1>
                     <p className='text-[#868e96] lg:text-[19px] leading-[30px] sm:text-[16px]'>{data.desc}</p>               
                   </div>
                 </div>

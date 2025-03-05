@@ -45,3 +45,31 @@ export const dummy = [
     img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/affordable-5.png"
   },
 ]
+
+export const links = [
+  {
+    id: 1,
+    title: "Home",
+    href: "/home",
+  },
+  {
+    id: 2,
+    title: "Car Rentals",
+    href: "/home",
+  },
+  {
+    id: 3,
+    title: "Car Booking",
+    href: "/home",
+  },
+  {
+    id: 4,
+    title: "Logistics",
+    href: "/home",
+  },
+  {
+    id: 5,
+    title: "Logistics",
+    href: "/home",
+  },
+]
