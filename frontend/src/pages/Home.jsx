@@ -1,10 +1,10 @@
 import React from 'react'
-import { data } from '../utils/dumyData'
+import { data, dummy } from '../utils/dumyData'
 
 const Home = () => {
   return (
-    <div className='text-(--font-display) m-auto'>
-      <div className='flex items-center gap-4'>
+    <div className='text-(--font-display) m-auto flex flex-col gap-[80px]'>
+      <div className='flex items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
         <div className='flex-1'>
           <div className='mx-[80px] flex flex-col gap-4'>
             <h1 className='text-[70px] text-[#1d274e] font-extrabold leading-[78px]'>Do More with Nairaxi</h1>
@@ -17,16 +17,29 @@ const Home = () => {
           <img className='flex-1 w-[100]' src="https://mlszn6rjkywy.i.optimole.com/w:850/h:803/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/06/Nairaxi-the-hybrid-application-for-movement-shopping-and-parcel-delivery-1-min.png" alt="" />
         </div>
       </div>
-      <div className='flex flex-col gap-[60px] not-odd:'>
+      <div className='max-w-[1100px] m-auto lg:flex lg:flex-row items-center justify-between gap-6 sm:flex sm:flex-col sm:gap-4'>
+        {
+          dummy.map((item) => {
+            return (
+              <div className='flex gap-3 flex-col items-center'>
+                <img src={item.img} className='w-[300px] object-cover' alt="" />
+                <h1 className='text-[24px] font-bold text-[#1d274e]'>{item.title}</h1>
+                <p className='text-[#868e96] text-center text-[16px] leading-[25px]'>{item.desc}</p>
+              </div>
+            )
+          })
+        }
+      </div>
+      <div className='flex flex-col gap-[60px] sm:flex sm:flex-col sm:gap-4'>
         {
           data.map((data) => {
             return (
-              <div className='flex gap-5 items-center even:flex-row-reverse'>
+              <div className='lg:flex lg:flex-row lg:gap-6 items-center lg:even:flex-row-reverse sm:flex sm:flex-col sm:gap-4'>
                 <div className='flex-1 w-full'>
                   <img src={data.img} className='w-[100%] object-cover' alt="" />
                 </div>
                 <div className='flex-1'>
-                  <div className='px-[120px] flex-1 flex flex-col gap-6'>
+                  <div className='lg:px-[120px] flex-1 flex flex-col gap-6 sm:px-[20px]'>
                     <h1 className='font-extrabold text-[46px] text-[#28a745]'>{data.title}</h1>
                     <p className='text-[#868e96] text-[19px] leading-[30px]'>{data.desc}</p>               
                   </div>

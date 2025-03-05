@@ -24,3 +24,24 @@ export const data = [
     title: "SEND"
   },
 ]
+
+export const dummy = [
+  {
+    id: 1,
+    title: "24/7 Customer Support",
+    desc: "A dedicated 24x7 customer support team always at your service to help solve any problem.",
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/customer-service-1.png"
+  },
+  {
+    id: 2,
+    title: "Top Rated Partners",
+    desc: "All our driver-partners and personal shoppers are background verified and trained to deliver only the best experience.",
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/top-rated-drivers-3.png"
+  },
+  {
+    id: 3,
+    title: "Affordable",
+    desc: "Our fares are transparent and suit your pocket. We offer affordable commute options in your city",
+    img: "https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/affordable-5.png"
+  },
+]
