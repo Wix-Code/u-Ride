@@ -55,17 +55,17 @@ export const links = [
   {
     id: 2,
     title: "Car Rentals",
-    href: "/home",
+    href: "/rentals",
   },
   {
     id: 3,
     title: "Car Booking",
-    href: "/home",
+    href: "/book",
   },
   {
     id: 4,
     title: "Logistics",
-    href: "/home",
+    href: "/logistics",
   },
   {
     id: 5,
