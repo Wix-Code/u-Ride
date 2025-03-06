@@ -75,9 +75,27 @@ export const login = async (req, res) => {
   }
 }
 
-export const logout = async () => {
+export const logout = async (req, res) => {
   try {
     return res.clearCookie("accessToken").status(200).json({ success: true, message: "Logout successful" });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to logout user" });
+  }
+}
+
+export const forgotPassword = async (req,res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to logout user" });
+  }
+}
+
+export const resetPassword = async (req, res) => {
+  try {
+   
   } catch (error) {
     console.log(error)
     res.status(500).json({ success: false, message: "Failed to logout user" });
