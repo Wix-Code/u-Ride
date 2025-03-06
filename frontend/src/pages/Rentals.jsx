@@ -46,6 +46,9 @@ const Rentals = () => {
           })
         }
       </div>
+      <div>
+        
+      </div>
       <div className='flex flex-col justify-center items-center gap-5'>
         <img src="https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg" width={650} alt='' />
         <h1 className='text-[24px] font-bold text-[#1d274e]'>Luxury Car Rentals with Chauffeur</h1>
