@@ -1,6 +1,9 @@
 import express from "express"
+import  authRoute  from "./route/auth.route.js"
 
 const app = express()
+
+app.use("/api/auth", authRoute)
 
 app.get("/", (req, res) => {
   res.send("Hello, World!")
