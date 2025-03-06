@@ -59,7 +59,7 @@ export const links = [
   },
   {
     id: 3,
-    title: "Car Booking",
+    title: "Book A Ride",
     href: "/book",
   },
   {
