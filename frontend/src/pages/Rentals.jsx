@@ -3,12 +3,12 @@ import { cars } from '../utils/dumyData'
 
 const Rentals = () => {
   return (
-    <div className='flex flex-col gap-20'>
+    <div className='font-display flex flex-col gap-20'>
       <div className='h-[75vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
         <h1 className='text-[#FFFFFF] lg:text-[48px] lg:font-extrabold'>Luxury Car Rentals with Chauffeur</h1>
         <p className='text-[#FFFFFF] lg:text-[16px] lg:font-bold'>Airport Transfer, Private Car Hire Services in Abuja, Lagos, Kano, PH & All major cities in Nigeria
         </p>
-        <button className='py-3 px-7 bg-[#28a745] text-[16px] text-white cursor-pointer'>Book Now</button>
+        <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer'>Book Now</button>
       </div>
       <div className='flex justify-center flex-col items-center max-w-[750px] m-auto'>
         <p className='font-extrabold uppercase text-[#1d274e]'>What we do</p>

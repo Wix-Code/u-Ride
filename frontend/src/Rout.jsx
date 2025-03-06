@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Rentals from './pages/Rentals'
 import Logistics from './pages/Logistics'
 import Booking from './pages/Booking'
+import Contact from './pages/Contact'
 
 const Rout = () => {
   return (
@@ -12,6 +13,7 @@ const Rout = () => {
       <Route path="/rentals" element={<Rentals />} />
       <Route path="/logistics" element={<Logistics />} />
       <Route path="/book" element={<Booking />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   )
 }

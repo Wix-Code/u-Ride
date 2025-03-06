@@ -3,7 +3,7 @@ import { data, dummy } from '../utils/dumyData'
 
 const Home = () => {
   return (
-    <div className='text-(--font-display) m-auto flex flex-col gap-[80px]'>
+    <div className='font-display m-auto flex flex-col gap-[80px]'>
       <div className='flex lg:flex lg:flex-row items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
         <div className='flex-1'>
           <div className='lg:mx-[80px] flex flex-col gap-4 sm:mx-[40px] sm:gap-2'>

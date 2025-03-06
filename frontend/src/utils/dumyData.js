@@ -50,7 +50,7 @@ export const links = [
   {
     id: 1,
     title: "Home",
-    href: "/home",
+    href: "/",
   },
   {
     id: 2,
@@ -69,8 +69,8 @@ export const links = [
   },
   {
     id: 5,
-    title: "Logistics",
-    href: "/home",
+    title: "Contact",
+    href: "/contact",
   },
 ]
 
