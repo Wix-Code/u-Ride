@@ -7,7 +7,7 @@ const ResponsiveNavBar = () => {
       {
         links.map((link) => {
           return (
-            <div key={link.id} className='flex items-center justify-between px-5 py-3'>
+            <div key={link.id} className='flex items-center justify-center px-5 py-3'>
               <a href={link.href} className='text-[#28a745] uppercase font-bold px-4 py-2 text-[16px] hover:text-[#007bff]'>{link.title}</a>
             </div>
           )

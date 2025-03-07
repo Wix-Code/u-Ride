@@ -28,7 +28,7 @@ const Rentals = () => {
       </div>
       <div className='bg-[#28a745] text-white text-center lg:px-52 lg:py-20 flex flex-col lg:gap-8 sm:px-5 sm:py-10 sm:gap-3'>
         <p className='lg:text-[22px] sm:text-[16px] font-medium'>RIDE IN STYLE</p>
-        <h1 className='font-extrabold sm:text-[18px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
+        <h1 className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
       <div className='grid lg:grid-cols-4 lg:gap-20 max-w-[1100px] m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
