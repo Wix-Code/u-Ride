@@ -61,7 +61,7 @@ const SinglePage = () => {
         <h1 className='font-extrabold sm:text-[18px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
-      <div className='lg:max-w-[800px] sm:mx-5 lg:m-auto flex flex-col gap-4 border-[1px] border-[#dddddd] p-10'>
+      <div className='lg:max-w-[800px] sm:mx-5 lg:m-auto flex flex-col gap-4 border-[1px] border-[#dddddd] p-10 sm:p-2'>
         <h1 className='text-[18px] text-[#1d274e] font-bold text-center'>Hire Mercedes Sprinter Bus</h1>
         <h2 className='lg:text-[22px] text-center text-[#1d274e] sm:text-[16px] font-extrabold'>RESERVE YOUR VEHICLE TODAY!</h2>
         <p className='text-[#868e96] text-center lg:text-[16px] sm:text-[14px]'>Our team of experienced drivers will provide you with stress-free travel, reliable service for all your needs in ground transportation. We give you upfront pricing, crystal clear communication, and an excellent customer experience every time.</p>
