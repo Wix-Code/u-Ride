@@ -100,7 +100,7 @@ export const forgotPassword = async (req, res) => {
   try {
     const secret = process.env.JWT_TOKEN + user.password;
     const resetToken = jwt.sign({ userId: user.id, email: user.email }, secret, { expiresIn: "1hr" })
-    const url = `http://localhost:3000/reset-password?id=${user.id}&token=${resetToken}`;
+    const url = `http://localhost:5173/reset-password?id=${user.id}&token=${resetToken}`;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -128,10 +128,41 @@ export const forgotPassword = async (req, res) => {
 }
 
 export const resetPassword = async (req, res) => {
+  const { id, token } = req.query;
+  const { password } = req.body;
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: parseInt(id),
+    },
+  })
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
+
   try {
-   
+    const secret = process.env.JWT_TOKEN + user.password;
+    const payload = jwt.verify(token, secret);
+    if (!payload) {
+      return res.status(401).json({ success: false, message: "Invalid token" });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    //user.password = hashedPassword;
+  
+    await prisma.user.update(
+      {
+        where: {
+          id: user.id,
+        },
+        data: {
+          password: hashedPassword,
+        },
+      },
+    );
+  
+    res.status(200).json({ success: true, message: "Password has been reset successfully", user });
   } catch (error) {
     console.log(error)
-    res.status(500).json({ success: false, message: "Failed to logout user" });
+    res.status(500).json({ success: false, message: "Failed to reset password" });
   }
 }
