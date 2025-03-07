@@ -3,8 +3,8 @@ import React from 'react'
 const Booking = () => {
   return (
     <div className='font-display flex flex-col gap-20'>
-       <div className='lg:h-[75vh] sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
-        <h1 className='text-[#FFFFFF] text-center lg:text-[48px] sm:text-[30px] font-extrabold'>Luxury Car Rentals with Chauffeur</h1>
+       <div className='lg:h-[75vh] lg:px-0 sm:px-5 sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
+        <h1 className='text-[#FFFFFF] text-center lg:text-[48px] sm:text-[30px] font-extrabold capitalize'>Book a ride with us today</h1>
         <p className='text-[#FFFFFF] text-center lg:text-[18px] sm:text-[18px] font-bold'>Airport Transfer, Private Car Hire Services in Abuja, Lagos, Kano, PH & All major cities in Nigeria
         </p>
         <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer'>Book Now</button>

@@ -6,7 +6,7 @@ const SinglePage = () => {
       <div>
         <img src="" alt="" />
       </div>
-      <div className='flex gap-10 lg:flex-row sm:mx-5 sm:flex-col max-w-[1100px] m-auto'>
+      <div className='flex gap-10 lg:flex-row sm:mx-5 sm:flex-col max-w-[1100px] lg:m-auto'>
         <div className='flex-1 flex flex-col gap-10'>
           <h1 className='text-[30px] font-extrabold text-[#28a745] text-center '>Hire Mercedes Sprinter Bus VIP edition</h1>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:647/h:316/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Hire-Mercedes-Sprinter-Nairaxi-Luxury-car-rentals-in-Lagos-Abuja-Port-Harcourt-Enugu-in-Nigeria.jpg" alt="" />
@@ -46,12 +46,13 @@ const SinglePage = () => {
             <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
           </div>
           <i className='text-red-600 font-medium text-[15px]'>Note, these prices are not fixed. It is subject to variations if you are booking a newer or an older model.</i>
-          <div>
+          <div className='flex lg:gap-5 lg:flex-row sm:flex-col sm:gap-2'>
             <button className='bg-[#28a745] lg:w-[200px] sm:w-full text-white py-3 font-medium'><a href="tel:+">Whatsapp now</a></button>
+            <button className='bg-[#28a745] lg:w-[200px] sm:w-full text-white py-3 font-medium'><a href="tel:+">Contact now</a></button>
           </div>
         </div>
       </div>
-      <div className='flex flex-col sm:mx-5 gap-5 max-w-[750px] m-auto'>
+      <div className='flex flex-col sm:mx-5 gap-5 max-w-[750px] lg:m-auto'>
         <h1 className='lg:text-[22px] sm:text-[18px] text-[#1d274e] font-extrabold'>Experience Unmatched Comfort and Convenience: Hire Mercedes Sprinter Bus with Nairaxi Prestige Car Rentals in Nigeria</h1>
         <p className='text-[#868e96] lg:text-[16px] sm:text-[14px]'>When it comes to transporting large groups with style, comfort, and efficiency, Nairaxi Prestige Car Rentals offers an exceptional solution. If you are planning a corporate event, a family reunion, or a group outing, hire Mercedes Sprinter Bus and ensure your journey is both comfortable and luxurious.</p>
         <p className='text-[#868e96] lg:text-[16px] sm:text-[14px]'>The Mercedes Sprinter Bus is renowned for its spaciousness, advanced features, and superior ride quality. This versatile vehicle is perfect for those who demand the best in group transportation, offering ample room for passengers and luggage while maintaining the highest standards of luxury and convenience. At Nairaxi, we take pride in maintaining our fleet of Mercedes Sprinter Buses to the highest standards, ensuring each vehicle is in pristine condition and ready to provide an unforgettable travel experience.</p>
@@ -92,11 +93,11 @@ const SinglePage = () => {
           <p className='lg:text-[16px] sm:text-[16px] font-bold text-[#1d274e]'>Itinerary Information</p>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Your Name</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Date</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Email</label>
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Time</label>
               <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
             </div>
           </div>
@@ -106,7 +107,7 @@ const SinglePage = () => {
               <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Phone No</label>
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>City</label>
               <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
             </div>
           </div>
