@@ -64,17 +64,27 @@ const SinglePage = () => {
       <div className='lg:max-w-[800px] sm:mx-5 lg:m-auto flex flex-col sm:gap-2 lg:gap-4 border-[1px] border-[#dddddd] lg:p-10 sm:p-5'>
         <h1 className='text-[18px] text-[#1d274e] font-bold text-center'>Hire Mercedes Sprinter Bus</h1>
         <h2 className='lg:text-[22px] text-center text-[#1d274e] sm:text-[16px] font-extrabold'>RESERVE YOUR VEHICLE TODAY!</h2>
-        <p className='text-[#868e96] text-center lg:text-[16px] sm:text-[14px]'>Our team of experienced drivers will provide you with stress-free travel, reliable service for all your needs in ground transportation. We give you upfront pricing, crystal clear communication, and an excellent customer experience every time.</p>
-        <div className='flex flex-col gap-5'>
+        <p className='text-[#868e96] text-center lg:text-[16px] sm:text-[14px] sm:text-justify'>Our team of experienced drivers will provide you with stress-free travel, reliable service for all your needs in ground transportation. We give you upfront pricing, crystal clear communication, and an excellent customer experience every time.</p>
+        <div className='flex flex-col lg:gap-5 sm:gap-2'>
           <p className='lg:text-[16px] sm:text-[16px] font-bold text-[#1d274e]'>Personal Information</p>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Your Name</label>
-              <input className='border-[1px] border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Your Name</label>
-              <input className='border-[1px] border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Email</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+            </div>
+          </div>
+          <div className='flex gap-2 lg:flex-row sm:flex-col'>
+            <div className='flex flex-col gap-2 w-full'>
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+            </div>
+            <div className='flex flex-col gap-2 w-full '>
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Phone No</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
             </div>
           </div>
         </div>
