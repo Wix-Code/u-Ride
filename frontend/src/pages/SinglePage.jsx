@@ -111,7 +111,7 @@ const SinglePage = () => {
             </div>
           </div>
         </div>
-        <button className='bg-[#28a745] cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
+        <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
       </div>
     </div>
   )
