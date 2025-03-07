@@ -19,3 +19,20 @@ model User {
   name    String?
   password String
 }
+
+model Rent {
+  id                 Int      @id @default(autoincrement())
+  userId             Int      @unique
+ // bookId       Int      @unique
+  fname              String
+  email              String
+  phoneNo            String
+  vehicleYear        String
+  vehicleQty         String
+  age                String
+  vehicleType        String
+  serviceType        String
+  city               String
+  startDate          DateTime @default(now())
+  endDate            DateTime?
+}
