@@ -22,8 +22,8 @@ const Home = () => {
           dummy.map((item) => {
             return (
               <div className='flex gap-3 flex-col items-center lg:p-0 sm:px-[20px]'>
-                <img src={item.img} className='w-[300px] object-cover sm:w-[150px]' alt="" />
-                <h1 className='text-[24px] font-bold text-[#1d274e] sm:text-[18px]'>{item.title}</h1>
+                <img src={item.img} className='lg:w-[300px] object-cover sm:w-[150px]' alt="" />
+                <h1 className='lg:text-[24px] lg:font-bold text-[#1d274e] sm:text-[18px]'>{item.title}</h1>
                 <p className='text-[#868e96] text-center text-[16px] leading-[25px] sm:text-[16px]'>{item.desc}</p>
               </div>
             )
