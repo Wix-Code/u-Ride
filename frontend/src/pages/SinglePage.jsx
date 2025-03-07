@@ -14,40 +14,40 @@ const SinglePage = () => {
         </div>
         <div className='flex-1 flex flex-col gap-4'>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='text-[18px]'>2019</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='text-[18px]'>2019</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Passengers:</p>
-            <p className='text-[18px]'>6</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Passengers:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>6</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Luggage Capacity:</p>
-            <p className='text-[18px]'>5</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Luggage Capacity:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>5</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Half Day Hire (Min 5 Hours):</p>
-            <p className='text-[18px]'>starting at ₦500,000</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Half Day Hire (Min 5 Hours):</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>starting at ₦500,000</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
-            <p className='text-[18px]'>starting at ₦800,000</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>starting at ₦800,000</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
-            <p className='text-[18px]'>starting at ₦800,000</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>starting at ₦800,000</p>
           </div>
           <div className='flex items-center gap-1'>
-            <p className='text-[18px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='text-[18px]'>2019</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
           </div>
           <i className='text-red-600 font-medium text-[15px]'>Note, these prices are not fixed. It is subject to variations if you are booking a newer or an older model.</i>
           <div>
-            <button className='bg-[#28a745] w-[200px] text-white py-3 font-medium'><a href="tel:+">Whatsapp now</a></button>
+            <button className='bg-[#28a745] lg:w-[200px] sm:w-full text-white py-3 font-medium'><a href="tel:+">Whatsapp now</a></button>
           </div>
         </div>
       </div>
