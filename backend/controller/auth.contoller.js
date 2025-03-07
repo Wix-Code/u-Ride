@@ -2,6 +2,7 @@ import { Prisma} from "@prisma/client";
 import prisma from "../utils/prisma.js";
 import bcrypt from "bcrypt"
 import validator from "validator"
+import nodemailer from "nodemailer"
 import jwt from "jsonwebtoken"
 
 export const register = async (req, res) => {
@@ -84,12 +85,45 @@ export const logout = async (req, res) => {
   }
 }
 
-export const forgotPassword = async (req,res) => {
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  })
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
+
   try {
+    const secret = process.env.JWT_TOKEN + user.password;
+    const resetToken = jwt.sign({ userId: user.id, email: user.email }, secret, { expiresIn: "1hr" })
+    const url = `http://localhost:3000/reset-password?id=${user.id}&token=${resetToken}`;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER, 
+        pass: process.env.EMAIL_PASS, 
+      },
+    });
+
+    const mailOptions = {
+      to: user.email,
+      from: process.env.EMAIL_USER,
+      subject: 'Password Reset Request',
+      text: `Your reset password link: ${url}`
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return res.status(200).json({ success: true, message: "Reset password link sent to your email" }); 
     
   } catch (error) {
     console.log(error)
-    res.status(500).json({ success: false, message: "Failed to logout user" });
+    res.status(500).json({ success: false, message: "Failed to send link" });
   }
 }
 
