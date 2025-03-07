@@ -27,9 +27,9 @@ model Rent {
   fname              String
   email              String
   phoneNo            String
-  vehicleYear        String
-  vehicleQty         String
-  age                String
+  vehicleYear        Int
+  vehicleQty         Int
+  age                Int
   vehicleType        String
   serviceType        String
   city               String
