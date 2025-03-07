@@ -1,10 +1,9 @@
-import { Prisma } from "@prisma/client"
-import prisma from "../utils/prisma"
+import prisma from "../utils/prisma.js"
 
 export const rental = async (req, res) => {
   const userId = req.user
   const { name, email, ...others } = req.body;
-  if (userId) {
+  if (!userId) {
     return res.status(404).json({success: true, message: "Not authorised"})
   }
   try {
