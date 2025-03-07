@@ -147,7 +147,6 @@ export const resetPassword = async (req, res) => {
       return res.status(401).json({ success: false, message: "Invalid token" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    //user.password = hashedPassword;
   
     await prisma.user.update(
       {
