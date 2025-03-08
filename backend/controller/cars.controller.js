@@ -1,6 +1,8 @@
+import prisma from "../utils/prisma.js";
+
 export const postCars = async (req, res) => {
-  const userId = req.user;
-  const { model, year, capacity, addHor, fullDay, halfDay, luggage, description, image } = req.body;
+  const userId = Number(req?.user.id);
+  const { model, capacity, addHor, name, fullDay, halfDay, luggage, description, image } = req.body;
   if (!userId) {
     return res.status(404).json({ success: true, message: "Not authorised" });
   }
@@ -9,7 +11,7 @@ export const postCars = async (req, res) => {
       data: {
         userId,
         model,
-        year,
+        name,
         capacity,
         addHor,
         fullDay,
@@ -37,15 +39,37 @@ export const getCars = async (req, res) => {
 }
 
 export const getCar = async (req, res) => { 
-  const { id } = req.params;
+  const carId = Number(req.params.id);
   try {
-    const car = await prisma.car.findUnique({ where: { id } });
+    const car = await prisma.car.findUnique({ where: { id: carId } });
     if (!car) {
       return res.status(404).json({ success: false, message: "Car not found" });
     }
-    res.status(200).json({ success: true, car });
+    res.status(200).json({ success: true, message: "Car found", car });
   } catch (error) {
     console.log(error)
     res.status(500).json({ success: false, message: "Failed to get car" });
+  }
+}
+
+export const updateCar = async (req, res) => { 
+  const carId = Number(req.params.id);
+  try {
+   
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to update car" });
+  }
+}
+
+export const deleteCar = async (req, res) => { 
+  const carId = Number(req.params.id);
+  try {
+    const car = await prisma.car.findUnique({ where: { id: carId } });
+    
+    res.status(200).json({ success: true, message: "Car found", car });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to delete car" });
   }
 }
