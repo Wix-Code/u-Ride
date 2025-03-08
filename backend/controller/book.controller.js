@@ -1,4 +1,4 @@
-export const book = async () => {
+export const bookRide = async () => {
   try {
     
   } catch (error) {
