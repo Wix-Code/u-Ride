@@ -8,7 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div className='mt-32 font-display'>
-      <div className='flex justify-between lg:flex-row max-w-[1000px] sm:flex-col sm:gap-3 lg:gap-5 lg:m-auto'>
+      <div className='flex justify-between lg:flex-row max-w-[1000px] sm:flex-col sm:gap-3 lg:gap-5 lg:m-auto sm:mx-6'>
         <div className='flex-1 flex flex-col gap-4'>
           <h1 className='text-[22px] text-[#1d274e] font-extrabold'>COMPANY</h1>
           <div className='uppercase text-[14px] flex flex-col gap-2'>
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className='flex-1 flex flex-col gap-4'>
           <h1 className='text-[22px] text-[#1d274e] font-extrabold'>DOWNLOAD</h1>
           <p className='text-[16px] text-[#343a40]'>Nairaxi App is now available on Android and iOS Platforms for hassle-free payments. Enjoy free rides on Registration.</p>
-          <div className='flex sm:flex-col sm:gap-1 lg:flex-row lg:gap-2'>
+          <div className='flex sm:flex-row sm:gap-1 lg:flex-row lg:gap-2'>
             <img src="https://mlszn6rjkywy.i.optimole.com/w:160/h:56/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/07/playstore-nairaxi.png" alt="" />
             <img src="https://mlszn6rjkywy.i.optimole.com/w:160/h:56/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/07/appstorenairaxi.png" alt="" />
           </div>
