@@ -20,10 +20,25 @@ model User {
   password String
 }
 
+model Car {
+  id                  Int      @id @default(autoincrement())
+  userId              Int      @unique
+  model               String
+  year                Int
+  capacity            Int
+  addHor              Int
+  fullDay             Int
+  halfDay             Int
+  luggage             Int
+  description         String
+  totalPrice          Int
+  image               String
+}
+
 model Rent {
   id                 Int      @id @default(autoincrement())
   userId             Int      @unique
- // bookId       Int      @unique
+  carId              Int      @unique
   fname              String
   email              String
   phoneNo            String
