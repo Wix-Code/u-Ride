@@ -9,11 +9,11 @@ const Booking = () => {
         </p>
         <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer'>Book Now</button>
       </div>
-      <div className='flex justify-center flex-col items-center max-w-[750px] m-auto sm:mx-5'>
+      <div className='flex justify-center flex-col items-center max-w-[750px] lg:m-auto sm:mx-5'>
         <p className='font-extrabold uppercase text-[#1d274e]'>What we do</p>
         <p className='text-center lg:text-[16px] sm:text-[12px] font-medium mt-5 text-[#343a40]'>U-RIDE Luxury Car Rentals with Chauffeur gets you to your destination promptly and comfortably. Our experienced staff offers personalized and professional assistance that enhances any celebration or corporate event. You can rely on a clean picture perfect condition vehicle waiting for you for special occasions and corporate ground transportation.</p>
       </div>
-      <div className='flex items-center max-w-[1150px] m-auto lg:flex-row lg:gap-8 sm:flex-col sm:gap-4 sm:mx-5'>
+      <div className='flex items-center max-w-[1150px] lg:m-auto lg:flex-row lg:gap-8 sm:flex-col sm:gap-4 sm:mx-5'>
         <div className='flex flex-col lg:gap-5 sm:gap-3'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
           <p className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Airport Transportation</p>

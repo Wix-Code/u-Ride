@@ -94,7 +94,7 @@ const SinglePage = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Date</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
+              <input className='border-[1px] w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Time</label>
