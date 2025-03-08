@@ -25,3 +25,27 @@ export const postCars = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to create car" });
   }
 }
+
+export const getCars = async (req, res) => {
+  try {
+    const cars = await prisma.car.findMany();
+    res.status(200).json({ success: true, cars });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to get cars" });
+  }
+}
+
+export const getCar = async (req, res) => { 
+  const { id } = req.params;
+  try {
+    const car = await prisma.car.findUnique({ where: { id } });
+    if (!car) {
+      return res.status(404).json({ success: false, message: "Car not found" });
+    }
+    res.status(200).json({ success: true, car });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to get car" });
+  }
+}

@@ -24,21 +24,20 @@ model Car {
   id                  Int      @id @default(autoincrement())
   userId              Int      @unique
   model               String
-  year                Int
+  name                String
   capacity            Int
   addHor              Int
   fullDay             Int
   halfDay             Int
   luggage             Int
   description         String
-  totalPrice          Int
   image               String
 }
 
 model Rent {
   id                 Int      @id @default(autoincrement())
   userId             Int      @unique
-  carId              Int      @unique
+  carId              Int?      
   fname              String
   email              String
   phoneNo            String
