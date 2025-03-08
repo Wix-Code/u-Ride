@@ -44,7 +44,7 @@ const Rentals = () => {
               <div data-aos="fade-up" key={car.id} className='flex gap-2 flex-col items-center'>
                 <p className='text-[#343a40] sm:text-[10px] lg:text-[12px] uppercase'>{car.type}</p>
                 <img src={car.img} width={250} alt={car.name} />
-                <h2 className='text-[#1d274e] font-bold sm:text-[16px] lg:text-[20px]'>{car.title}</h2>
+                <h2 className='text-[#1d274e] sm:text-center font-bold sm:text-[16px] lg:text-[20px]'>{car.title}</h2>
                 <p className='text-[#343a40] text-[16px]'>{car.description}</p>
                 <button className='py-1 bg-white border-[2px] sm:px-2 lg:px-4 border-[#28a745] lg:text-[14px] sm:text-[10px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button>
               </div>
