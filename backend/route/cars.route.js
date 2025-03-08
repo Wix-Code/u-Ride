@@ -7,7 +7,7 @@ const router = express.Router()
 router.post("/", verifyToken, postCars)
 router.get("/", getCars)
 router.get("/:id", getCar)
-router.put("/:id", updateCar)
-router.delete("/:id", deleteCar)
+router.put("/:id", verifyToken, updateCar)
+router.delete("/:id", verifyToken, deleteCar)
 
 export default router
