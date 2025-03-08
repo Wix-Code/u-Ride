@@ -45,7 +45,9 @@ model Book {
   email              String
   phoneNo            String
   age                Int
-  pickUp             String
-  DropOff            String
+  pickupLocation     String
+  DropoffLocation    String
   amount             Int
+  date               DateTime
+  time               DateTime
 }
