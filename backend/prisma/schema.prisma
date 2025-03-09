@@ -32,25 +32,24 @@ model Car {
   luggage     Int
   description String
   image       String
-
-  // Relation to Rent
-  rents       Rent[]   // One car can have multiple rentals
+  rents       Rent[] 
 }
 
 model Rent {
   id          Int      @id @default(autoincrement())
   userId      Int
-  carId       Int?      // Fixed relation
+  carId       Int?   
   fname       String
   email       String
   phoneNo     String
+  rentalType     String?
   vehicleYear Int?
   vehicleQty  Int?
   age         Int
   vehicleType String?
   serviceType String?
   city        String
-  price       Int?     // Store price as an integer
+  price       Int?  
   startDate   DateTime @default(now())
   endDate     DateTime?
   car         Car?      @relation(fields: [carId], references: [id])
