@@ -98,9 +98,58 @@ export const deleteCar = async (req, res) => {
 }
 
 export const calculatePrice = async (req, res) => { 
+  const { id, email, fname, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
+  const userId = Number(req?.user?.id);
+
+  if (!userId) {
+    return res.status(401).json({ success: false, message: "Not authorized" });
+  }
+  
+  /*if (!id) {
+    return res.status(400).json({ success: false, message: "Car ID is required" });
+  }*/
+
   try {
+    const car = await prisma.car.findUnique({ where: { id: Number(id) } });
+
+    if (!car) {
+      return res.status(404).json({ success: false, message: "Car not found" });
+    }
+
+    const formattedDate = new Date(startDate).toISOString();
+    const formattedEndDate = new Date(endDate).toISOString();
+
+    const rent = await prisma.rent.create({
+      data: {
+        userId,
+        carId: car.id, // Fixed: Use `car.id`
+        email,
+        fname,
+        rentalType,
+        startDate: formattedDate,
+        endDate: formattedEndDate,
+        age,
+        phoneNo,
+        city,
+      },
+    });
+
+    let totalPrice = 0;
+    if (rentalType === "halfDay") {
+      totalPrice = car.halfDay;
+    } else if (rentalType === "fullDay") {
+      totalPrice = car.fullDay;
+    } else {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+      totalPrice = days * car.fullDay;
+    }
+
+    res.status(200).json({ success: true, message: "Car rented successfully", totalPrice, rent });
     
   } catch (error) {
-    console.log(error)
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
-}
+};
