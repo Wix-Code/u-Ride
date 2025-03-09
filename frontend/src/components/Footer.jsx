@@ -28,7 +28,7 @@ const Footer = () => {
           <a className='lg:text-[16px] sm:text-[14px] text-[#343a40] flex items-center gap-1' href="mailto:ogbonna428alex@gmail.com"><IoMdMail /> ogbonna428alex@gmail.com</a>
           <a className='lg:text-[16px] sm:text-[14px] text-[#343a40] flex items-center gap-1' href="tel:+2348126829146"><FaPhone /> 08126829146</a>
           <a className='lg:text-[16px] sm:text-[14px] text-[#28a745] flex items-center gap-1' href="http://"><FaLocationDot /> No 16 Banjul Street, Wuse II, Abuja.</a>
-          <img className='mt-3 lg:w-full sm:w-[200px]' src="https://s11.flagcounter.com/count2/O9J1/bg_FFFFFF/txt_000000/border_FFFFFF/columns_4/maxflags_40/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="" />
+          <img className='mt-3' src="https://s11.flagcounter.com/count2/O9J1/bg_FFFFFF/txt_000000/border_FFFFFF/columns_4/maxflags_40/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="" />
         </div>
         <div className='flex-1 flex flex-col gap-4'>
           <h1 className='lg:text-[22px] sm:text-[18px] text-[#1d274e] font-extrabold'>DOWNLOAD</h1>
