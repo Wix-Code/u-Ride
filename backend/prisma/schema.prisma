@@ -21,35 +21,41 @@ model User {
 }
 
 model Car {
-  id                  Int      @id @default(autoincrement())
-  userId              Int      @unique
-  model               String
-  name                String
-  capacity            Int
-  addHor              Int
-  fullDay             Int
-  halfDay             Int
-  luggage             Int
-  description         String
-  image               String
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  model       String
+  name        String
+  capacity    Int
+  addHor      Int
+  fullDay     Int
+  halfDay     Int
+  luggage     Int
+  description String
+  image       String
+
+  // Relation to Rent
+  rents       Rent[]   // One car can have multiple rentals
 }
 
 model Rent {
-  id                 Int      @id @default(autoincrement())
-  userId             Int      @unique
-  carId              Int?      
-  fname              String
-  email              String
-  phoneNo            String
-  vehicleYear        Int
-  vehicleQty         Int
-  age                Int
-  vehicleType        String
-  serviceType        String
-  city               String
-  startDate          DateTime @default(now())
-  endDate            DateTime?
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  carId       Int?      // Fixed relation
+  fname       String
+  email       String
+  phoneNo     String
+  vehicleYear Int?
+  vehicleQty  Int?
+  age         Int
+  vehicleType String?
+  serviceType String?
+  city        String
+  price       Int?     // Store price as an integer
+  startDate   DateTime @default(now())
+  endDate     DateTime?
+  car         Car?      @relation(fields: [carId], references: [id])
 }
+
 
 model Book {
   id                 Int      @id @default(autoincrement())
