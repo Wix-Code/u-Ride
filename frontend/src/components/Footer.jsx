@@ -8,7 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div className='mt-32 font-display'>
-      <div className='flex justify-between lg:flex-row max-w-[1000px] sm:flex-col sm:gap-3 lg:gap-5 lg:m-auto sm:mx-6 sm:w-full'>
+      <div className='flex justify-between lg:flex-row max-w-[1000px] sm:flex-col sm:gap-3 lg:gap-5 lg:m-auto sm:mx-6'>
         <div className='flex-1 flex flex-col gap-4'>
           <h1 className='lg:text-[22px] sm:text-[18px] text-[#1d274e] font-extrabold'>COMPANY</h1>
           <div className='uppercase lg:text-[14px] sm:text-[13px] flex flex-col gap-2'>
