@@ -101,7 +101,6 @@ export const deleteCar = async (req, res) => {
 export const calculatePrice = async (req, res) => { 
   const { id, email, fname, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
   const userId = Number(req?.user?.id);
-  
 
   if (!userId) {
     return res.status(401).json({ success: false, message: "Not authorized" });
@@ -158,24 +157,30 @@ export const calculatePrice = async (req, res) => {
         age,
         phoneNo,
         city,
-        price: totalPrice, // Save price
+        price: totalPrice,
       },
     });
 
     res.status(200).json({ success: true, message: "Car rented successfully", totalPrice, rent });
     
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
+    console.log(error);
+    res.status(500).json({ success: false, message: "Fail to rent a car"});
   }
 };
 
 export const getRentals = async (req, res) => {
-  const userId = Number(req?.user?.id);
+  /*const userId = Number(req?.user?.id);
   if (!userId) {
     return res.status(401).json({ success: false, message: "Not authorized" });
+  }*/
+  try {
+    const rent = await prisma.rent.findMany();
+    res.status(200).json({ success: true,message: "Rentals fetched", rent });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to get rentals" });
   }
-
 }
 
 const url = "http://localhost:5173/"
@@ -208,5 +213,13 @@ export const processPayment = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ success: false, message: "Failed to make payment" });
+  }
+}
+
+export const verifyPayment = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error)
   }
 }
