@@ -42,12 +42,12 @@ model Rent {
   fname       String
   email       String
   phoneNo     String
-  rentalType     String?
-  vehicleYear Int?
-  vehicleQty  Int?
+  rentalType     Int?
+  //vehicleYear Int?
+  //vehicleQty  Int?
   age         Int
-  vehicleType String?
-  serviceType String?
+  //vehicleType String?
+  //serviceType String?
   city        String
   price       Int?  
   startDate   DateTime? @default(now())
@@ -68,5 +68,5 @@ model Book {
   DropoffLocation    String
   amount             Int
   date               DateTime
-  time               DateTime
+  time               String
 }

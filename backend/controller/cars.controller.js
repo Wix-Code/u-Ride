@@ -116,8 +116,8 @@ export const calculatePrice = async (req, res) => {
       return res.status(404).json({ success: false, message: "Car not found" });
     }
 
-    const formattedDate = new Date(startDate).toISOString();
-    const formattedEndDate = new Date(endDate).toISOString();
+    //const formattedDate = new Date(startDate).toISOString();
+    //const formattedEndDate = new Date(endDate).toISOString();
 
     const rent = await prisma.rent.create({
       data: {
@@ -126,8 +126,8 @@ export const calculatePrice = async (req, res) => {
         email,
         fname,
         rentalType,
-        startDate: formattedDate,
-        endDate: formattedEndDate,
+        startDate: startDate ? new Date(startDate).toISOString() : null, // Only set if provided
+    endDate: endDate ? new Date(endDate).toISOString() : null,
         age,
         phoneNo,
         city,
