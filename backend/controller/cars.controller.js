@@ -105,9 +105,9 @@ export const calculatePrice = async (req, res) => {
     return res.status(401).json({ success: false, message: "Not authorized" });
   }
   
-  /*if (!id) {
+  if (!id) {
     return res.status(400).json({ success: false, message: "Car ID is required" });
-  }*/
+  }
 
   try {
     const car = await prisma.car.findUnique({ where: { id: Number(id) } });
@@ -122,7 +122,7 @@ export const calculatePrice = async (req, res) => {
     const rent = await prisma.rent.create({
       data: {
         userId,
-        carId: car.id, // Fixed: Use `car.id`
+        carId : car.id, // Fixed: Use `car.id`
         email,
         fname,
         rentalType,

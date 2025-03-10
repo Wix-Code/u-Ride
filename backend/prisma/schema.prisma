@@ -50,7 +50,7 @@ model Rent {
   serviceType String?
   city        String
   price       Int?  
-  startDate   DateTime @default(now())
+  startDate   DateTime? @default(now())
   endDate     DateTime?
   car         Car?      @relation(fields: [carId], references: [id])
 }
