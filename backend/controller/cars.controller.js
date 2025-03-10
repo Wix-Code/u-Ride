@@ -169,20 +169,6 @@ export const calculatePrice = async (req, res) => {
   }
 };
 
-export const getRentals = async (req, res) => {
-  /*const userId = Number(req?.user?.id);
-  if (!userId) {
-    return res.status(401).json({ success: false, message: "Not authorized" });
-  }*/
-  try {
-    const rent = await prisma.rent.findMany();
-    res.status(200).json({ success: true,message: "Rentals fetched", rent });
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ success: false, message: "Failed to get rentals" });
-  }
-}
-
 const url = "http://localhost:5173/"
 export const processPayment = async (req, res) => {
   const { rentId } = req.body;
