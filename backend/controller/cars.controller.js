@@ -100,6 +100,7 @@ export const deleteCar = async (req, res) => {
 export const calculatePrice = async (req, res) => { 
   const { id, email, fname, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
   const userId = Number(req?.user?.id);
+  
 
   if (!userId) {
     return res.status(401).json({ success: false, message: "Not authorized" });
@@ -108,43 +109,57 @@ export const calculatePrice = async (req, res) => {
   if (!id) {
     return res.status(400).json({ success: false, message: "Car ID is required" });
   }
+  console.log(rentalType, "rent")
 
   try {
-    const car = await prisma.car.findUnique({ where: { id: Number(id) },  select: { halfDay: true, fullDay: true } });
+    const car = await prisma.car.findUnique({ where: { id: Number(id) },  select: { id: true, halfDay: true, fullDay: true } });
 
     if (!car) {
       return res.status(404).json({ success: false, message: "Car not found" });
     }
 
+    if (car.fullDay == null || car.halfDay == null) {
+      return res.status(400).json({ success: false, message: "Car pricing details missing" });
+    }
+
     //const formattedDate = new Date(startDate).toISOString();
     //const formattedEndDate = new Date(endDate).toISOString();
-
-    const rent = await prisma.rent.create({
-      data: {
-        userId,
-        carId : car.id, // Fixed: Use `car.id`
-        email,
-        fname,
-        rentalType,
-        startDate: startDate ? new Date(startDate).toISOString() : null, // Only set if provided
-    endDate: endDate ? new Date(endDate).toISOString() : null,
-        age,
-        phoneNo,
-        city,
-      },
-    });
-
     let totalPrice = 0;
+
     if (rentalType === "halfDay") {
       totalPrice = car.halfDay;
     } else if (rentalType === "fullDay") {
       totalPrice = car.fullDay;
-    } else {
+    } else if (rentalType === "multiDay" && startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
-      const days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+        return res.status(400).json({ success: false, message: "Invalid date format" });
+      }
+
+      const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
       totalPrice = days * car.fullDay;
+    } else {
+      return res.status(400).json({ success: false, message: "Invalid rental type or missing dates" });
     }
+
+    // Store rental record
+    const rent = await prisma.rent.create({
+      data: {
+        userId,
+        carId: car.id,
+        email,
+        fname,
+        rentalType,
+        startDate: startDate ? new Date(startDate).toISOString() : null,
+        endDate: endDate ? new Date(endDate).toISOString() : null,
+        age,
+        phoneNo,
+        city,
+        price: totalPrice, // Save price
+      },
+    });
 
     res.status(200).json({ success: true, message: "Car rented successfully", totalPrice, rent });
     
