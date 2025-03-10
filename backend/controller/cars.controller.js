@@ -110,7 +110,7 @@ export const calculatePrice = async (req, res) => {
   }
 
   try {
-    const car = await prisma.car.findUnique({ where: { id: Number(id) } });
+    const car = await prisma.car.findUnique({ where: { id: Number(id) },  select: { halfDay: true, fullDay: true } });
 
     if (!car) {
       return res.status(404).json({ success: false, message: "Car not found" });

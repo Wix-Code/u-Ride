@@ -42,7 +42,7 @@ model Rent {
   fname       String
   email       String
   phoneNo     String
-  rentalType     Int?
+  rentalType     String?
   //vehicleYear Int?
   //vehicleQty  Int?
   age         Int
