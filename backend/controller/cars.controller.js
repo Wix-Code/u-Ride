@@ -1,3 +1,4 @@
+import { paystack } from "../utils/paystackApi.js";
 import prisma from "../utils/prisma.js";
 
 export const postCars = async (req, res) => {
@@ -168,3 +169,44 @@ export const calculatePrice = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
+
+export const getRentals = async (req, res) => {
+  const userId = Number(req?.user?.id);
+  if (!userId) {
+    return res.status(401).json({ success: false, message: "Not authorized" });
+  }
+
+}
+
+const url = "http://localhost:5173/"
+export const processPayment = async (req, res) => {
+  const { rentId } = req.body;
+  const userId = Number(req?.user?.id);
+  if (!userId) {
+    return res.status(401).json({ success: false, message: "Not authorized" });
+  }
+  try {
+    const rent = await prisma.rent.findUnique({
+      where: { id: rentId },
+      select: { id: true, email: true, price: true },
+    })
+    if (!rent) {
+      return res.status(404).json({ success: false, message: "Rental record not found" });
+    }
+
+    if (!rent.price || rent.price <= 0) {
+      return res.status(400).json({ success: false, message: "Invalid rental amount" });
+    }
+    const response = await paystack.transaction.initialize({
+      email: rent.email,
+      amount: Math.round(rent.price * 100),
+      currency: "NGN",
+      callback_url: `${url}/verify?orderId=${rentId}`,
+    });
+    
+    res.status(200).json({ success: true, message: "Payment initialized successfully", data: response });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to make payment" });
+  }
+}
