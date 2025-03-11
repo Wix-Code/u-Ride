@@ -1,3 +1,5 @@
+import axios from "axios"
+import prisma from "../utils/prisma.js";
 const calculateDistance = (lat1, lon1, lat2, lon2) => {
   const R = 6371; // Radius of Earth in KM
   const toRad = (value) => (value * Math.PI) / 180;
@@ -58,7 +60,12 @@ export const bookRide = async () => {
 }
 
 export const text = async (req, res) => {
-  const { fname, email, phoneNo, age, pickupLocation, dropoffLocation, pickupCoords, dropoffCoords } = req.body;
+  const { fname, email, phoneNo, age, pickupLocation, DropoffLocation, pickupCoords, dropoffCoords } = req.body;
+  const userId = Number(req?.user?.id)
+  if (!userId) {
+    return res.status(404).json({ success: true, message: "Not authorised" });
+  }
+  
         
   try {
      // Calculate distance using OpenRouteService API
@@ -68,7 +75,7 @@ export const text = async (req, res) => {
           locations: [pickupCoords, dropoffCoords],
           metrics: ['distance'],
       },
-      { headers: { Authorization: `Bearer ${process.env.ORS_API_KEY}` } }
+      { headers: { Authorization: `Bearer ${process.env.GOOGLE_API_KEY}`,"Content-Type": "application/json" } }
   );
 
   const distanceInMeters = orsResponse.data.distances[0][1];
@@ -82,8 +89,9 @@ export const text = async (req, res) => {
           email,
           phoneNo,
           age,
+          userId,
           pickupLocation,
-          dropoffLocation,
+          DropoffLocation,
           amount: Math.round(amount),
           date: new Date(),
           time: new Date().toLocaleTimeString(),
