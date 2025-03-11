@@ -1,5 +1,6 @@
 import axios from "axios"
 import prisma from "../utils/prisma.js"
+import { paystack } from "../utils/paystackApi.js";
 
 export const bookRide = async () => {
   const userId = req.user;
@@ -72,4 +73,55 @@ export const bookaRide = async (req, res) => {
     console.log(error)
     res.status(500).json({ success: false, message: "Failed to send text" });
   }
+}
+
+export const getBookings = async (req, res) => {
+  /*const userId = Number(req?.user?.id)
+  if (!userId) {
+    return res.status(404).json({ success: true, message: "Not authorised" });
+  }*/
+  try {
+    const bookings = await prisma.book.findMany();
+    res.status(200).json({ success: true, bookings });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to get bookings" });
+  }
+}
+
+const url = "http://localhost:5173/"
+export const processBookingPayment = async (req, res) => {
+  const { bookId } = req.body;
+  const userId = Number(req?.user?.id);
+  if (!userId) {
+    return res.status(401).json({ success: false, message: "Not authorized" });
+  }
+  try {
+    const book = await prisma.book.findUnique({
+      where: { id: bookId },
+      select: { id: true, email: true, amount: true },
+    })
+    if (!book) {
+      return res.status(404).json({ success: false, message: "Booking record not found" });
+    }
+
+    if (!book.amount || book.amount <= 0) {
+      return res.status(400).json({ success: false, message: "Invalid booking amount" });
+    }
+    const response = await paystack.transaction.initialize({
+      email: book.email,
+      amount: Math.round(book.amount * 100),
+      currency: "NGN",
+      callback_url: `${url}/verify?orderId=${bookId}`,
+    });
+    
+    res.status(200).json({ success: true, message: "Payment initialized successfully", data: response });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to make payment" });
+  }
+}
+
+export const verifyBookingPayment = async (req, res) => {
+  const { orderId } = req.query;
 }

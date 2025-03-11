@@ -72,6 +72,11 @@ export const links = [
     title: "Contact",
     href: "/contact",
   },
+  {
+    id: 6,
+    title: "Login",
+    href: "/login",
+  },
 ]
 
 export const cars = [
