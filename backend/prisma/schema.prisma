@@ -58,8 +58,7 @@ model Rent {
 
 model Book {
   id                 Int      @id @default(autoincrement())
-  userId             Int      @unique
- // bookId       Int      @unique
+  userId             Int  
   fname              String
   email              String
   phoneNo            String
@@ -69,4 +68,5 @@ model Book {
   amount             Int
   date               DateTime
   time               String
+  status             String   @default("pending")
 }

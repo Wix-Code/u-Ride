@@ -56,3 +56,43 @@ export const bookRide = async () => {
     res.status(500).json({ success: false, message: "Failed to book a ride" });
   }
 }
+
+export const text = async (req, res) => {
+  const { fname, email, phoneNo, age, pickupLocation, dropoffLocation, pickupCoords, dropoffCoords } = req.body;
+        
+  try {
+     // Calculate distance using OpenRouteService API
+     const orsResponse = await axios.post(
+      `https://api.openrouteservice.org/v2/matrix/driving-car`,
+      {
+          locations: [pickupCoords, dropoffCoords],
+          metrics: ['distance'],
+      },
+      { headers: { Authorization: `Bearer ${process.env.ORS_API_KEY}` } }
+  );
+
+  const distanceInMeters = orsResponse.data.distances[0][1];
+  const distanceInKm = distanceInMeters / 1000;
+  const amount = distanceInKm * 250; // Example: ₦250 per km
+
+  // Save booking in database
+  const booking = await prisma.book.create({
+      data: {
+          fname,
+          email,
+          phoneNo,
+          age,
+          pickupLocation,
+          dropoffLocation,
+          amount: Math.round(amount),
+          date: new Date(),
+          time: new Date().toLocaleTimeString(),
+      },
+  });
+
+  res.status(201).json({ success: true, message: 'Booking created. Proceed to payment.', booking });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Failed to send text" });
+  }
+}
