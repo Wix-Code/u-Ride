@@ -18,8 +18,8 @@ const Home = () => {
             <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Send, Receive & Track items seamlessly  all on one platform.</p>
           </div>
         </div>
-        <div className='flex-1 sm:w-[100%]'>
-          <img data-aos="fade-left" className='flex-1 w-[100] sm:w-[100%]' src="https://mlszn6rjkywy.i.optimole.com/w:850/h:803/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/06/Nairaxi-the-hybrid-application-for-movement-shopping-and-parcel-delivery-1-min.png" alt="" />
+        <div data-aos="fade-left" className='flex-1 sm:w-[100%]'>
+          <img className='flex-1 w-[100] sm:w-[100%]' src="https://mlszn6rjkywy.i.optimole.com/w:850/h:803/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/06/Nairaxi-the-hybrid-application-for-movement-shopping-and-parcel-delivery-1-min.png" alt="" />
         </div>
       </div>
       <div className='max-w-[1100px] m-auto lg:flex lg:flex-row items-center justify-between gap-6 sm:flex sm:flex-col sm:gap-4'>
