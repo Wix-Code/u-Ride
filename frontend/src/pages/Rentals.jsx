@@ -33,8 +33,8 @@ const Rentals = () => {
         </div>
         <div className='flex flex-col gap-3'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
-          <p data-aos="fade-left" data-aos-delay="100" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Flexible Rentals</p>
-          <p data-aos="fade-left" data-aos-delay="500" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
+          <p data-aos="fade-right" data-aos-delay="100" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Flexible Rentals</p>
+          <p data-aos="fade-right" data-aos-delay="500" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
         </div>
       </div>
       <div className='bg-[#28a745] text-white text-center lg:px-52 lg:py-20 flex flex-col lg:gap-8 sm:px-5 sm:py-10 sm:gap-3'>
