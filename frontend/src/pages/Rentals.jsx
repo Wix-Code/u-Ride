@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { cars } from '../utils/dumyData'
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Rentals = () => {
+  const formRef = useRef(null);
+
+  const handleScrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -14,7 +19,7 @@ const Rentals = () => {
         <h1 className='text-[#FFFFFF] text-center lg:text-[48px] sm:text-[30px] font-extrabold'>Luxury Car Rentals with Chauffeur</h1>
         <p className='text-[#FFFFFF] text-center lg:text-[18px] sm:text-[18px] font-bold'>Airport Transfer, Private Car Hire Services in Abuja, Lagos, Kano, PH & All major cities in Nigeria
         </p>
-        <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer'>Book Now</button>
+        <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer' onClick={handleScrollToForm}>Book Now</button>
       </div>
       <div className='flex justify-center flex-col items-center max-w-[750px] lg:m-auto sm:mx-5'>
         <p className='font-extrabold uppercase text-[#1d274e]'>What we do</p>
@@ -37,7 +42,7 @@ const Rentals = () => {
         <h1 data-aos="fade-up" data-aos-delay="100" className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
-      <div className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
+      <div ref={formRef} className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
         {
           cars.map((car) => {
             return (

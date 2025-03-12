@@ -1,20 +1,25 @@
-import React from 'react'
+import AOS from 'aos';
+import React, { useEffect } from 'react'
 import { data, dummy } from '../utils/dumyData'
 
 const Home = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <div className='font-display m-auto flex flex-col gap-[80px]'>
       <div className='flex lg:flex lg:flex-row items-center gap-4 sm:flex sm:flex-col-reverse sm:gap-4 sm:even:flex-row-reverse'>
         <div className='flex-1'>
           <div className='lg:mx-[80px] flex flex-col gap-4 sm:mx-[40px] sm:gap-2'>
-            <h1 className='lg:text-[70px] text-[#1d274e] font-extrabold lg:leading-[78px] sm:text-[30px] sm:leading-8'>Do More with Nairaxi</h1>
+            <h1 data-aos="fade-right" className='lg:text-[70px] text-[#1d274e] font-extrabold lg:leading-[78px] sm:text-[30px] sm:leading-8'>Do More with Nairaxi</h1>
             <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Get an affordable ride service in minutes.</p>
             <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Shop and have groceries delivered right to your door from your favorite stores.</p>
             <p className='lg:text-[22px] text-[#868e96] sm:text-[16px]'>Send, Receive & Track items seamlessly  all on one platform.</p>
           </div>
         </div>
         <div className='flex-1 sm:w-[100%]'>
-          <img className='flex-1 w-[100] sm:w-[100%]' src="https://mlszn6rjkywy.i.optimole.com/w:850/h:803/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/06/Nairaxi-the-hybrid-application-for-movement-shopping-and-parcel-delivery-1-min.png" alt="" />
+          <img data-aos="fade-left" className='flex-1 w-[100] sm:w-[100%]' src="https://mlszn6rjkywy.i.optimole.com/w:850/h:803/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2023/06/Nairaxi-the-hybrid-application-for-movement-shopping-and-parcel-delivery-1-min.png" alt="" />
         </div>
       </div>
       <div className='max-w-[1100px] m-auto lg:flex lg:flex-row items-center justify-between gap-6 sm:flex sm:flex-col sm:gap-4'>

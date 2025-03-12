@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 const Booking = () => {
+  const formRef = useRef(null);
+
+  const handleScrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <div className='font-display flex flex-col gap-20'>
        <div className='lg:h-[75vh] lg:px-0 sm:px-5 sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
         <h1 className='text-[#FFFFFF] text-center lg:text-[48px] sm:text-[30px] font-extrabold capitalize'>Book a ride with us today</h1>
         <p className='text-[#FFFFFF] text-center lg:text-[18px] sm:text-[18px] font-bold'>Airport Transfer, Private Car Hire Services in Abuja, Lagos, Kano, PH & All major cities in Nigeria
         </p>
-        <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer'>Book Now</button>
+        <button className='py-3 px-7 bg-white border-[2px] border-[#28a745] text-[14px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] hover:border-[2px] hover:border-white cursor-pointer' onClick={handleScrollToForm}>Book Now</button>
       </div>
       <div className='flex justify-center flex-col items-center max-w-[750px] lg:m-auto sm:mx-5'>
         <p className='font-extrabold uppercase text-[#1d274e]'>What we do</p>
@@ -30,7 +35,7 @@ const Booking = () => {
         <h1 className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
-      <div className='lg:max-w-[800px] sm:mx-5 lg:m-auto flex flex-col sm:gap-2 lg:gap-4 border-[1px] border-[#dddddd] lg:p-10 sm:p-5'>
+      <div ref={formRef} className='lg:max-w-[800px] sm:mx-5 lg:m-auto flex flex-col sm:gap-2 lg:gap-4 border-[1px] border-[#dddddd] lg:p-10 sm:p-5'>
         <h1 className='text-[18px] text-[#1d274e] font-bold text-center'>Hire Mercedes Sprinter Bus</h1>
         <h2 className='lg:text-[22px] text-center text-[#1d274e] sm:text-[16px] font-extrabold'>RESERVE YOUR VEHICLE TODAY!</h2>
         <p className='text-[#868e96] lg:text-center lg:text-[16px] sm:text-[14px] sm:text-justify'>Our team of experienced drivers will provide you with stress-free travel, reliable service for all your needs in ground transportation. We give you upfront pricing, crystal clear communication, and an excellent customer experience every time.</p>
