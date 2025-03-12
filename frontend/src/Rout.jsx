@@ -9,6 +9,7 @@ import SinglePage from './pages/SinglePage'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
+import ResetPasssword from './pages/ResetPasssword'
 
 const Rout = () => {
   return (
@@ -22,6 +23,7 @@ const Rout = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot" element={<ForgotPassword />} />
+      <Route path="/reset" element={<ResetPasssword />} />
     </Routes>
   )
 }

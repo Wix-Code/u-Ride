@@ -15,8 +15,8 @@ const Navbar = () => {
         {
           links.map((link) => {
             return (
-              <div>
-                <Link key={link.id} to={link.href} className='text-[#28a745] uppercase font-bold px-4 py-2 text-[16px] hover:text-[#1d274e]'>{link.title}</Link>
+              <div key={link.id}>
+                <Link to={link.href} className='text-[#28a745] uppercase font-bold px-4 py-2 text-[16px] hover:text-[#1d274e]'>{link.title}</Link>
               </div>
             )
           })
