@@ -47,7 +47,7 @@ const Context = (props) => {
     handleSubmit
   }
   return (
-    <storeContext.Provider value={{values}}>
+    <storeContext.Provider value={values}>
       {props.children}
     </storeContext.Provider>
   )
