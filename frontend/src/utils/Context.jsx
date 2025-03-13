@@ -36,7 +36,6 @@ const Context = (props) => {
       navigate("/")
     }
     console.log(res.data)
-    // make API call to register user with userDetails
   }
 
 
