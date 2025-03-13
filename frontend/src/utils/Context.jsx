@@ -39,13 +39,12 @@ const Context = (props) => {
     // make API call to register user with userDetails
   }
 
+
   const values = {
     carRent,
     setCarRent,
     handleChange,
-    handleSubmit,
-    userDetails,
-    setUserDetails
+    handleSubmit
   }
   return (
     <storeContext.Provider value={{values}}>
