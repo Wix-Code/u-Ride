@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from "axios"
 
 const Register = () => {
   const [userDetails, setUserDetails] = useState({
@@ -13,6 +14,13 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(userDetails)
+    const res = await axios.post("http://localhost:5000/api/auth/register", userDetails, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      withCredentials: true
+    })
+    console.log(res.data)
     // make API call to register user with userDetails
   }
   return (

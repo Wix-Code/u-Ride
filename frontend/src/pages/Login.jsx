@@ -11,11 +11,11 @@ const Login = () => {
         <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
           <div className='flex flex-col gap-1'>
             <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Email</label>
-            <input onChange={handleChange} className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="email" placeholder="Enter your email" />
+            <input onChange={handleChange} className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="email" placeholder="Enter your email" name='email' />
           </div>
           <div className='flex flex-col gap-1'>
             <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Password</label>
-            <input onChange={handleChange} className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="password" placeholder="Enter your password" />
+            <input onChange={handleChange} className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' name='password' type="password" placeholder="Enter your password" />
           </div>
           <div className='flex justify-between items-center'>
             <Link to="/register"><p className='lg:text-[16px] hover:text-[#28a745] text-[#4f5050] sm:text-[14px]'>Register</p></Link>

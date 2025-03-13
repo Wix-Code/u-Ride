@@ -1,6 +1,9 @@
 import React, { createContext, useState } from 'react'
 export const storeContext = createContext()
+import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 const Context = (props) => {
+  const navigate = useNavigate()
   const [userDetails, setUserDetails] = useState({
     email: '',
     password: ''
@@ -23,6 +26,16 @@ const Context = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(userDetails)
+    const res = await axios.post("http://localhost:5000/api/auth/login", userDetails, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      withCredentials: true
+    })
+    if (res.data) {
+      navigate("/")
+    }
+    console.log(res.data)
     // make API call to register user with userDetails
   }
 
