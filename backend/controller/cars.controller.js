@@ -3,7 +3,7 @@ import prisma from "../utils/prisma.js";
 
 export const postCars = async (req, res) => {
   const userId = Number(req?.user.id);
-  const { model, capacity, addHor, name, fullDay, halfDay, luggage, description, image } = req.body;
+  const { model, capacity, addHor, type, name, fullDay, halfDay, luggage, description, image } = req.body;
   if (!userId) {
     return res.status(404).json({ success: true, message: "Not authorised" });
   }
@@ -15,6 +15,7 @@ export const postCars = async (req, res) => {
         name,
         capacity,
         addHor,
+        type,
         fullDay,
         halfDay,
         luggage,
