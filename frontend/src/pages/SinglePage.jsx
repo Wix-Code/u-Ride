@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from "axios"
 
 const SinglePage = () => {
+  const { id } = useParams()
+  const [car, setCar] = useState([])
+
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await axios.get(`http://localhost:5000/api/cars/${id}`, {
+        withCredentials: false,
+        headers: { "Content-Type": "application/json" }
+      })
+      setCar(response.data.car)
+      console.log(response, "iddd")
+      console.log(car)
+    }
+
+    fetch()
+  },[id])
   return (
     <div className='flex flex-col gap-10 font-display'>
       <div>
@@ -8,14 +26,14 @@ const SinglePage = () => {
       </div>
       <div className='flex gap-10 lg:flex-row sm:mx-5 sm:flex-col max-w-[1100px] lg:m-auto'>
         <div className='flex-1 flex flex-col gap-10'>
-          <h1 className='text-[30px] font-extrabold text-[#28a745] text-center '>Hire Mercedes Sprinter Bus VIP edition</h1>
-          <img src="https://mlszn6rjkywy.i.optimole.com/w:647/h:316/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Hire-Mercedes-Sprinter-Nairaxi-Luxury-car-rentals-in-Lagos-Abuja-Port-Harcourt-Enugu-in-Nigeria.jpg" alt="" />
+          <h1 className='text-[30px] font-extrabold text-[#28a745] text-center '>{car.name}</h1>
+          <img src={car.image} alt="" />
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1920/h:146/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/03/3-advantages-of-using-flexible-rental-car-hire-NAIRAXI.png" alt="" />
         </div>
         <div className='flex-1 flex flex-col gap-4'>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>{car.model}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
@@ -23,23 +41,23 @@ const SinglePage = () => {
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Passengers:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>6</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>{car.capacity}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Luggage Capacity:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>5</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>{car.luggage}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Half Day Hire (Min 5 Hours):</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>starting at ₦500,000</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>starting at {car.halfDay}</p>
+          </div>
+          <div className='flex items-center gap-1'>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Full Day Hire (Min 10 Hours):</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>starting at {car.fullDay}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>starting at ₦800,000</p>
-          </div>
-          <div className='flex items-center gap-1'>
-            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>starting at ₦800,000</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>starting at {car.addHor}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>

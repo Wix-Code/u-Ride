@@ -3,6 +3,7 @@ import { cars } from '../utils/dumyData'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { storeContext } from '../utils/Context';
+import { Link } from 'react-router-dom';
 
 const Rentals = () => {
   const formRef = useRef(null);
@@ -53,7 +54,7 @@ const Rentals = () => {
                 <img src={car.image} className='' alt={car.name} />
                 <h2 className='text-[#1d274e] sm:text-center font-bold sm:text-[16px] lg:text-[20px]'>{car.name}</h2>
                 
-                <button className='py-1 bg-white border-[2px] sm:px-2 lg:px-4 border-[#28a745] lg:text-[14px] sm:text-[10px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button>
+                <Link to={`/${car.id}`}><button className='py-1 bg-white border-[2px] sm:px-2 lg:px-4 border-[#28a745] lg:text-[14px] sm:text-[10px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button></Link>
               </div>
             )
           })

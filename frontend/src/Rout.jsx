@@ -18,7 +18,7 @@ const Rout = () => {
       <Route path="/rentals" element={<Rentals />} />
       <Route path="/logistics" element={<Logistics />} />
       <Route path="/book" element={<Booking />} />
-      <Route path="/sin" element={<SinglePage />} />
+      <Route path="/:id" element={<SinglePage />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
