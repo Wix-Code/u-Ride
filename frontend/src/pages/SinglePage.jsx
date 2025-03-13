@@ -32,12 +32,12 @@ const SinglePage = () => {
         </div>
         <div className='flex-1 flex flex-col gap-4'>
           <div className='flex items-center gap-1'>
-            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>{car.model}</p>
+            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Type:</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>{car.type}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
+            <p className='lg:text-[18px] sm:text-[16px]'>{car.model}</p>
           </div>
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Passengers:</p>
@@ -58,10 +58,6 @@ const SinglePage = () => {
           <div className='flex items-center gap-1'>
             <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Additional Hour:</p>
             <p className='lg:text-[18px] sm:text-[16px]'>starting at {car.addHor}</p>
-          </div>
-          <div className='flex items-center gap-1'>
-            <p className='lg:text-[18px] sm:text-[16px] text-[#3c3c3c] font-medium'>Model:</p>
-            <p className='lg:text-[18px] sm:text-[16px]'>2019</p>
           </div>
           <i className='text-red-600 font-medium text-[15px]'>Note, these prices are not fixed. It is subject to variations if you are booking a newer or an older model.</i>
           <div className='flex lg:gap-5 lg:flex-row sm:flex-col sm:gap-2'>
