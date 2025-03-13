@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { cars } from '../utils/dumyData'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { storeContext } from '../utils/Context';
 
 const Rentals = () => {
   const formRef = useRef(null);
+  const { carData } = useContext(storeContext)
 
   const handleScrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -44,11 +46,11 @@ const Rentals = () => {
       </div>
       <div ref={formRef} className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
         {
-          cars.map((car) => {
+          carData.map((car) => {
             return (
               <div data-aos="fade-up" key={car.id} className='flex gap-2 flex-col items-center'>
                 <p className='text-[#343a40] sm:text-[10px] lg:text-[12px] uppercase'>{car.type}</p>
-                <img src={car.img} width={250} alt={car.name} />
+                <img src={car?.image} width={250} alt={car.name} />
                 <h2 className='text-[#1d274e] sm:text-center font-bold sm:text-[16px] lg:text-[20px]'>{car.title}</h2>
                 <p className='text-[#343a40] text-[16px]'>{car.description}</p>
                 <button className='py-1 bg-white border-[2px] sm:px-2 lg:px-4 border-[#28a745] lg:text-[14px] sm:text-[10px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button>

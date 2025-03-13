@@ -1,9 +1,10 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 export const storeContext = createContext()
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 const Context = (props) => {
   const navigate = useNavigate()
+  const [carData, setCarData] = useState([])
   const [userDetails, setUserDetails] = useState({
     email: '',
     password: ''
@@ -38,11 +39,30 @@ const Context = (props) => {
     console.log(res.data)
   }
 
+ 
+  
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/cars", {
+        withCredentials: false
+      });
+      setCarData(res.data.cars)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+  useEffect(() => {
+    //console.log("Updated carData:", carData);
+  }, [carData]);
 
   const values = {
     carRent,
     setCarRent,
     handleChange,
+    carData,
     handleSubmit
   }
   return (
