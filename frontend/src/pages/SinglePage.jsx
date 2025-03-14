@@ -8,6 +8,7 @@ const SinglePage = () => {
   const navigate = useNavigate()
   const [car, setCar] = useState([])
   const { token } = useContext(storeContext)
+  const [amount, setAmount] = useState(null)
   
   const [carRent, setCarRent] = useState({
     city: "",
@@ -42,27 +43,64 @@ const SinglePage = () => {
   const submitDetails = async (e) => {
     e.preventDefault();
     if (!token) {
-      alert("Please log in to book a car"),
-        navigate('/login')
+      alert("Please log in to book a car");
+      navigate('/login');
       return;
     }
-    console.log(carRent)
-    alert("come")
-    const updatedCarRent = { ...carRent, carId: id };
+
+    console.log(carRent);
+
+    let startDate = carRent.startDate ? new Date(carRent.startDate) : null;
+    let endDate = carRent.endDate ? new Date(carRent.endDate) : null;
+    const age = parseInt(carRent.age);
+
+    if (startDate && isNaN(startDate.getTime())) {
+      alert("Invalid start date format. Please enter a valid date.");
+      return;
+    }
+
+    if (endDate && isNaN(endDate.getTime())) {
+      alert("Invalid end date format. Please enter a valid date.");
+      return;
+    }
+
+    const updatedCarRent = {
+      ...carRent,
+      id: id,
+      startDate: startDate ? startDate.toISOString() : null,
+      endDate: endDate ? endDate.toISOString() : null,
+      age: age
+    };
+
+    console.log(id, "user");
+
     try {
-      const response = await axios.post(`http://localhost:5000/api/cars/calculate`, updatedCarRent, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-           Authorization: `Bearer ${token}`
-        },
-      })
-      console.log(response.data)
+      const response = await axios.post(
+        `http://localhost:5000/api/cars/calculate`,
+        updatedCarRent,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      setAmount(response.data.totalPrice);
     } catch (error) {
-      console.log(error)
+      console.log(error);
+    }
+  };
+
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    try {
+      
+    } catch (error) {
+      
     }
   }
-  
   return (
     <div className='flex flex-col gap-10 font-display'>
       <div>
@@ -139,7 +177,7 @@ const SinglePage = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' onChange={handleInputChange} id='name' name='age' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='number' onChange={handleInputChange} id='name' name='age' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Phone No</label>
@@ -154,7 +192,7 @@ const SinglePage = () => {
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Rental Type</label>
               <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="rentalType" id="">
                 <option>Select</option>
-                <option value="haftDay">{car.halfDay}</option>
+                <option value="halfDay">{car.halfDay}</option>
                 <option value="fullDay">{car.fullDay}</option>
                 <option value="multiDay">More than a day</option>
               </select>
@@ -195,6 +233,14 @@ const SinglePage = () => {
           </div>
         </div>
         <button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
+        {
+          amount !== null && (
+            <div>
+              <h2>Total Amount: ₦{amount}</h2>
+              <button onClick={handlePayment}>Proceed to Payment</button>
+            </div>
+          )
+        }
       </div>
     </div>
   )
