@@ -1,11 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios"
+import { storeContext } from '../utils/Context'
 
 const SinglePage = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [car, setCar] = useState([])
-
+  const { token } = useContext(storeContext)
+  
+  const [carRent, setCarRent] = useState({
+    city: "",
+    fname: "",
+    email: "",
+    age: "",
+    time: "",
+    phoneNo: "",
+    rentalType: "",
+    startDate: "",
+    endDate: "",
+  })
+ 
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(`http://localhost:5000/api/cars/${id}`, {
@@ -18,7 +33,35 @@ const SinglePage = () => {
     }
 
     fetch()
-  },[id])
+  }, [id])
+  
+  const handleInputChange = (e) => {
+    setCarRent({...carRent, [e.target.name]: e.target.value })
+  }
+
+  const submitDetails = async (e) => {
+    e.preventDefault();
+    if (!token) {
+      alert("Please log in to book a car"),
+        navigate('/login')
+      return;
+    }
+    console.log(carRent)
+    alert("come")
+    try {
+      const response = await axios.post(`http://localhost:5000/api/cars/calculate`, carRent, {
+        withCredentials: false,
+        headers: {
+          "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`
+        },
+      })
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
   return (
     <div className='flex flex-col gap-10 font-display'>
       <div>
@@ -85,21 +128,21 @@ const SinglePage = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Your Name</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' onChange={handleInputChange} id='name' name='fname' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Email</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' onChange={handleInputChange} id='name' name='email' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' onChange={handleInputChange} id='name' name='age' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Phone No</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} type='text' id='name' name='phoneNo' required />
             </div>
           </div>
         </div>
@@ -108,45 +151,49 @@ const SinglePage = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col2'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Rental Type</label>
-              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' name="" id="">
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="rentalType" id="">
                 <option>Select</option>
                 <option value="haftDay">{car.halfDay}</option>
                 <option value="fullDay">{car.fullDay}</option>
-                <option value="multiple"></option>
+                <option value="multiDay">More than a day</option>
               </select>
             </div>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Pickup Time</label>
-              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' name="" id="">
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="time" id="">
                 <option>Select</option>
-                <option value="haftDay">{car.halfDay}</option>
-                <option value="fullDay">{car.fullDay}</option>
-                <option value="multiple"></option>
+                <option value="9AM">9AM</option>
+                <option value="10AM">10AM</option>
+                <option value="11AM">11AM</option>
+                <option value="12PM">12PM</option>
+                <option value="1PM">1PM</option>
+                <option value="2PM">2PM</option>
+                
               </select>
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Date</label>
-              <input className='border-[1px] w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
+              <input className='border-[1px] w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' name='startDate' onChange={handleInputChange} required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>End Date Time</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' onChange={handleInputChange} name='endDate' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} type='text' id='name' name=''  />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>City</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} type='text' name='city' required />
             </div>
           </div>
         </div>
-        <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
+        <button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
       </div>
     </div>
   )
