@@ -20,7 +20,7 @@ const SinglePage = () => {
     startDate: "",
     endDate: "",
   })
- 
+ console.log(id)
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(`http://localhost:5000/api/cars/${id}`, {
@@ -48,8 +48,9 @@ const SinglePage = () => {
     }
     console.log(carRent)
     alert("come")
+    const updatedCarRent = { ...carRent, carId: id };
     try {
-      const response = await axios.post(`http://localhost:5000/api/cars/calculate`, carRent, {
+      const response = await axios.post(`http://localhost:5000/api/cars/calculate`, updatedCarRent, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
