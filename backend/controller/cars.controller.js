@@ -100,7 +100,7 @@ export const deleteCar = async (req, res) => {
 }
 
 export const calculatePrice = async (req, res) => { 
-  const { id, email, fname, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
+  const { id, email, fname, time, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
   const userId = Number(req?.user?.id);
 
   if (!userId) {
@@ -152,6 +152,7 @@ export const calculatePrice = async (req, res) => {
         carId: car.id,
         email,
         fname,
+        time,
         rentalType,
         startDate: startDate ? new Date(startDate).toISOString() : null,
         endDate: endDate ? new Date(endDate).toISOString() : null,

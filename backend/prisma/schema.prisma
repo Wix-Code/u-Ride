@@ -50,6 +50,7 @@ model Rent {
   //vehicleType String?
   //serviceType String?
   city        String
+  time        String?
   price       Int?  
   startDate   DateTime? @default(now())
   endDate     DateTime?

@@ -105,14 +105,34 @@ const SinglePage = () => {
         </div>
         <div className='flex flex-col lg:gap-5 mt-5 sm:gap-2'>
           <p className='lg:text-[16px] sm:text-[16px] font-bold text-[#1d274e]'>Itinerary Information</p>
+          <div className='flex gap-2 lg:flex-row sm:flex-col2'>
+            <div className='flex flex-col gap-2 w-full'>
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Rental Type</label>
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' name="" id="">
+                <option>Select</option>
+                <option value="haftDay">{car.halfDay}</option>
+                <option value="fullDay">{car.fullDay}</option>
+                <option value="multiple"></option>
+              </select>
+            </div>
+            <div className='flex flex-col gap-2 w-full'>
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Pickup Time</label>
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' name="" id="">
+                <option>Select</option>
+                <option value="haftDay">{car.halfDay}</option>
+                <option value="fullDay">{car.fullDay}</option>
+                <option value="multiple"></option>
+              </select>
+            </div>
+          </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Date</label>
               <input className='border-[1px] w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Time</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>End Date Time</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' name='name' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>

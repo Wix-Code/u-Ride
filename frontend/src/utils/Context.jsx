@@ -4,6 +4,7 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 const Context = (props) => {
   const navigate = useNavigate()
+  const [token, setToken] = useState("")
   const [carData, setCarData] = useState([])
   const [userDetails, setUserDetails] = useState({
     email: '',
@@ -34,9 +35,11 @@ const Context = (props) => {
       withCredentials: true
     })
     if (res.data) {
+      localStorage.setItem(JSON.stringify(setToken(res.data.token)))
       navigate("/")
     }
     console.log(res.data)
+    console.log(token, "token")
   }
 
  
