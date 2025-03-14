@@ -50,7 +50,7 @@ const SinglePage = () => {
     alert("come")
     try {
       const response = await axios.post(`http://localhost:5000/api/cars/calculate`, carRent, {
-        withCredentials: false,
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
            Authorization: `Bearer ${token}`
