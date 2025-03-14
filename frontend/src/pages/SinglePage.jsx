@@ -9,6 +9,7 @@ const SinglePage = () => {
   const [car, setCar] = useState([])
   const { token } = useContext(storeContext)
   const [amount, setAmount] = useState(null)
+  const [rentData, setRentData] = useState(null)
   
   const [carRent, setCarRent] = useState({
     city: "",
@@ -39,7 +40,6 @@ const SinglePage = () => {
   const handleInputChange = (e) => {
     setCarRent({...carRent, [e.target.name]: e.target.value })
   }
-
   const submitDetails = async (e) => {
     e.preventDefault();
     if (!token) {
@@ -88,6 +88,7 @@ const SinglePage = () => {
       );
       console.log(response.data);
       setAmount(response.data.totalPrice);
+      setRentData(response.data.rent);
     } catch (error) {
       console.log(error);
     }
@@ -96,9 +97,26 @@ const SinglePage = () => {
   const handlePayment = async (e) => {
     e.preventDefault();
     try {
-      
+      const response = await axios.post("http://localhost:5000/api/cars/process", { 
+        rentId: rentData.id, 
+        email: rentData.email, 
+        price: amount 
+      }, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(response)
+      if (response.data.data.status === true) {
+        console.log(response.data.data.data.authorization_url)
+        window.location.replace(response.data.data.data.authorization_url);
+      } else {
+        console.log(response.data.message);
+      }
     } catch (error) {
-      
+      console.log(error)
     }
   }
   return (
@@ -187,19 +205,19 @@ const SinglePage = () => {
         </div>
         <div className='flex flex-col lg:gap-5 mt-5 sm:gap-2'>
           <p className='lg:text-[16px] sm:text-[16px] font-bold text-[#1d274e]'>Itinerary Information</p>
-          <div className='flex gap-2 lg:flex-row sm:flex-col2'>
+          <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Rental Type</label>
-              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="rentalType" id="">
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="rentalType" id="" required >
                 <option>Select</option>
-                <option value="halfDay">{car.halfDay}</option>
-                <option value="fullDay">{car.fullDay}</option>
+                <option value="halfDay">&#8358;{new Intl.NumberFormat('en-US').format(car.halfDay)}</option>
+                <option value="fullDay">&#8358;{new Intl.NumberFormat('en-US').format(car.fullDay)}</option>
                 <option value="multiDay">More than a day</option>
               </select>
             </div>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Pickup Time</label>
-              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="time" id="">
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="time" id="" required >
                 <option>Select</option>
                 <option value="9AM">9AM</option>
                 <option value="10AM">10AM</option>
@@ -207,7 +225,6 @@ const SinglePage = () => {
                 <option value="12PM">12PM</option>
                 <option value="1PM">1PM</option>
                 <option value="2PM">2PM</option>
-                
               </select>
             </div>
           </div>
@@ -235,9 +252,9 @@ const SinglePage = () => {
         <button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
         {
           amount !== null && (
-            <div>
-              <h2>Total Amount: ₦{amount}</h2>
-              <button onClick={handlePayment}>Proceed to Payment</button>
+            <div className='flex flex-col gap-2'>
+              <h2 className='text-center font-bold lg:text-[24px] sm:text-[20px]'>Total Amount: &#8358;{new Intl.NumberFormat('en-US').format(amount)}</h2>
+              <button className='bg-[#ffffff] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-white px-10 h-[52px]' onClick={handlePayment}>Proceed to Payment</button>
             </div>
           )
         }
