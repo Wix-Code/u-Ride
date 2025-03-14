@@ -1,11 +1,30 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 const Booking = () => {
   const formRef = useRef(null);
+  const [formData, setFormData] = useState({
+    fname:  "",
+    email:  "",
+    phoneNo: "",
+    age:  "",
+    pickupLocation: "",
+    DropoffLocation: "",
+    amount: "",
+    date: "",
+    time: ""
+  })
 
   const handleScrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const handleInputChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value });
+  }
+  const submit = (e) => { 
+    e.preventDefault();
+    console.log(formData)
+  }
   return (
     <div className='font-display flex flex-col gap-20'>
        <div className='lg:h-[75vh] lg:px-0 sm:px-5 sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
@@ -44,21 +63,21 @@ const Booking = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Your Name</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' onChange={handleInputChange} id='name' name='fname' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Email</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' onChange={handleInputChange} id='name' name='email' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' onChange={handleInputChange} name='age' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Phone No</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' onChange={handleInputChange} name='phoneNo' required />
             </div>
           </div>
         </div>
@@ -66,26 +85,34 @@ const Booking = () => {
           <p className='lg:text-[16px] sm:text-[16px] font-bold text-[#1d274e]'>Itinerary Information</p>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Your Name</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Location</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' onChange={handleInputChange} name='pickupLocation' required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Email</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Destination</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' onChange={handleInputChange} name='DropoffLocation' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Time</label>
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px] lg:text-[16px] text-[#4f5050] sm:text-[14px]' onChange={handleInputChange} name="time" id="" required >
+                <option>Select</option>
+                <option value="9AM">9AM</option>
+                <option value="10AM">10AM</option>
+                <option value="11AM">11AM</option>
+                <option value="12PM">12PM</option>
+                <option value="1PM">1PM</option>
+                <option value="2PM">2PM</option>
+              </select>
             </div>
             <div className='flex flex-col gap-2 w-full '>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Phone No</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='text' id='name' name='name' required />
+              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Date</label>
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' onChange={handleInputChange} name='date' required />
             </div>
           </div>
         </div>
-        <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
+        <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]' onClick={submit}>Submit Request</button>
       </div>
     </div>
   )

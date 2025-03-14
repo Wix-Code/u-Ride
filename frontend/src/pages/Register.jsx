@@ -31,15 +31,15 @@ const Register = () => {
         <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-1'>
           <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Email</label>
-          <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="text" name='name' onChange={handleChange} placeholder="Enter your name" />
+          <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="text" name='name' onChange={handleChange} placeholder="Enter your name" required />
         </div>
         <div className='flex flex-col gap-1'>
           <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Email</label>
-          <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="email" name='email' onChange={handleChange} placeholder="Enter your email" />
+          <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="email" name='email' onChange={handleChange} placeholder="Enter your email" required />
         </div>
         <div className='flex flex-col gap-1'>
           <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Password</label>
-          <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="password" onChange={handleChange} name='password' placeholder="Enter your password" />
+          <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="password" onChange={handleChange} name='password' placeholder="Enter your password" required />
         </div>
         <div className='flex justify-between items-center'>
           <p className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Already have an account?</p>
