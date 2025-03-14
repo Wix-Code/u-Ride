@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 export const storeContext = createContext()
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import Api from './Api'
 const Context = (props) => {
   const navigate = useNavigate()
   const [carData, setCarData] = useState([])
@@ -34,10 +35,7 @@ const Context = (props) => {
     e.preventDefault()
     try {
       console.log(userDetails)
-      const res = await axios.post("http://localhost:5000/api/auth/login", userDetails, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
+      const res = await Api.post("/auth/login", userDetails, {
         withCredentials: true
       })
       if (res.data.token) {
@@ -54,7 +52,7 @@ const Context = (props) => {
   
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/cars", {
+      const res = await Api.get("/cars", {
         withCredentials: false
       });
       setCarData(res.data.cars)

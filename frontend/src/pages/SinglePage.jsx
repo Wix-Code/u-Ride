@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios"
 import { storeContext } from '../utils/Context'
+import Api from '../utils/Api'
 
 const SinglePage = () => {
   const { id } = useParams()
@@ -25,9 +26,8 @@ const SinglePage = () => {
  console.log(id)
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get(`http://localhost:5000/api/cars/${id}`, {
-        withCredentials: false,
-        headers: { "Content-Type": "application/json" }
+      const response = await Api.get(`/cars/${id}`, {
+        withCredentials: false
       })
       setCar(response.data.car)
       console.log(response, "iddd")
@@ -75,13 +75,12 @@ const SinglePage = () => {
     console.log(id, "user");
 
     try {
-      const response = await axios.post(
-        `http://localhost:5000/api/cars/calculate`,
+      const response = await Api.post(
+        `cars/calculate`,
         updatedCarRent,
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
@@ -97,14 +96,13 @@ const SinglePage = () => {
   const handlePayment = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/cars/process", { 
+      const response = await Api.post("/cars/process", { 
         rentId: rentData.id, 
         email: rentData.email, 
         price: amount 
       }, {
         withCredentials: true,
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       })
@@ -208,7 +206,7 @@ const SinglePage = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Rental Type</label>
-              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="rentalType" id="" required >
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px] lg:text-[16px] text-[#4f5050] sm:text-[14px]' onChange={handleInputChange} name="rentalType" id="" required >
                 <option>Select</option>
                 <option value="halfDay">&#8358;{new Intl.NumberFormat('en-US').format(car.halfDay)}</option>
                 <option value="fullDay">&#8358;{new Intl.NumberFormat('en-US').format(car.fullDay)}</option>
@@ -217,7 +215,7 @@ const SinglePage = () => {
             </div>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'  htmlFor="">Pickup Time</label>
-              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} name="time" id="" required >
+              <select className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px] lg:text-[16px] text-[#4f5050] sm:text-[14px]' onChange={handleInputChange} name="time" id="" required >
                 <option>Select</option>
                 <option value="9AM">9AM</option>
                 <option value="10AM">10AM</option>
@@ -231,11 +229,11 @@ const SinglePage = () => {
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
             <div className='flex flex-col gap-2 w-full'>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Date</label>
-              <input className='border-[1px] w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' name='startDate' onChange={handleInputChange} required />
+              <input className='border-[1px] w-full lg:text-[16px] text-[#4f5050] sm:text-[14px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' name='startDate' onChange={handleInputChange} required />
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>End Date Time</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' onChange={handleInputChange} name='endDate' required />
+              <input className='border-[1px] lg:text-[16px] text-[#4f5050] sm:text-[14px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' onChange={handleInputChange} name='endDate' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>

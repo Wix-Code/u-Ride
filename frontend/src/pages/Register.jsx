@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios"
+import Api from '../utils/Api'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -15,10 +16,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(userDetails)
-    const res = await axios.post("http://localhost:5000/api/auth/register", userDetails, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
+    const res = await Api.post("/auth/register", userDetails, {
       withCredentials: true
     })
     console.log(res.data)
