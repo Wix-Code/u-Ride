@@ -21,11 +21,10 @@ const Register = () => {
       const response = await Api.post("/auth/register", userDetails, {
         withCredentials: true
       })
-      toast(response.data.message)
       console.log(response.data)
       if (response?.data?.success === true) {
         toast(response?.data?.message)
-        //navigate("/login")
+        navigate("/login")
       }
     } catch (error) {
       console.log(error)

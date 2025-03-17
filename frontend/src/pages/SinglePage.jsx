@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios"
 import { storeContext } from '../utils/Context'
 import Api from '../utils/Api'
+import { toast } from 'react-toastify'
 
 const SinglePage = () => {
   const { id } = useParams()
@@ -11,6 +12,8 @@ const SinglePage = () => {
   const { token } = useContext(storeContext)
   const [amount, setAmount] = useState(null)
   const [rentData, setRentData] = useState(null)
+
+  console.log(token)
   
   const [carRent, setCarRent] = useState({
     city: "",
@@ -42,7 +45,9 @@ const SinglePage = () => {
   }
   const submitDetails = async (e) => {
     e.preventDefault();
-    if (!token) {
+    const toke = localStorage.getItem("token");
+    console.log(toke, "toke")
+    if (!toke) {
       alert("Please log in to book a car");
       navigate('/login');
       return;
@@ -90,6 +95,7 @@ const SinglePage = () => {
       setRentData(response.data.rent);
     } catch (error) {
       console.log(error);
+      toast.error(error.response?.data?.message || "Failed to rent a car")
     }
   };
 
@@ -233,7 +239,7 @@ const SinglePage = () => {
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>End Date Time</label>
-              <input className='border-[1px] lg:text-[16px] text-[#4f5050] sm:text-[14px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' onChange={handleInputChange} name='endDate' required />
+              <input className='border-[1px] lg:text-[16px] text-[#4f5050] sm:text-[14px] sm:w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' onChange={handleInputChange} name='endDate' required />
             </div>
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
