@@ -1,7 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
+import Api from '../utils/Api'
+import { storeContext } from '../utils/Context';
+import axios from "axios"
 
 const Booking = () => {
   const formRef = useRef(null);
+  const [pickupCoords, setPickupCoords] = useState(null);
+  const [dropoffCoords, setDropoffCoords] = useState(null);
+  const [amount, setAmount] = useState(null);
+  const [bookData, setBookData] = useState(null);
+  const { token } = useContext(storeContext)
   const [formData, setFormData] = useState({
     fname:  "",
     email:  "",
@@ -21,9 +29,81 @@ const Booking = () => {
   const handleInputChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value });
   }
-  const submit = (e) => { 
+  const getCoordinates = async (address) => {
+    const apiKey = import.meta.env.GOOGLE_API_KEY;
+    console.log("API Key:", apiKey); 
+    try {
+      const response = await axios.get(
+        `https://api.openrouteservice.org/geocode/search?api_key=5b3ce3597851110001cf624846a720c3605f4143b5efa95dbc5a4a85&text=${encodeURIComponent(address)}`
+      );
+      const { features } = response.data;
+      if (features.length > 0) {
+        return features[0].geometry.coordinates; // Returns [longitude, latitude]
+      }
+      return null;
+    } catch (error) {
+      console.error("Error fetching coordinates:", error);
+      return null;
+    }
+  };
+ 
+  const submit = async (e) => { 
     e.preventDefault();
     console.log(formData)
+    const pickup = await getCoordinates(formData.pickupLocation);
+    const dropoff = await getCoordinates(formData.DropoffLocation);
+
+    if (!pickup || !dropoff) {
+      alert("Please enter valid addresses");
+      return;
+    }
+
+    setPickupCoords(pickup);
+    setDropoffCoords(dropoff);
+    const age = parseInt(formData.age);
+
+    try {
+      const response = await Api.post("/book", {
+        ...formData,
+        age: age,
+        pickupCoords: pickup,
+        dropoffCoords: dropoff,
+      }, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data)
+      setAmount(response.data.booking.amount)    
+      setBookData(response.data.booking)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Api.post("/book/payment", { 
+        bookId: bookData.id, 
+        email: bookData.email, 
+        amount: amount 
+      }, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(response)
+      if (response.data.data.status === true) {
+        console.log(response.data.data.data.authorization_url)
+        window.location.replace(response.data.data.data.authorization_url);
+      } else {
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <div className='font-display flex flex-col gap-20'>
@@ -113,6 +193,14 @@ const Booking = () => {
           </div>
         </div>
         <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]' onClick={submit}>Submit Request</button>
+        {
+          amount !== null && (
+            <div className='flex flex-col gap-2'>
+              <h2 className='text-center font-bold lg:text-[24px] sm:text-[20px]'>Total Amount: &#8358;{new Intl.NumberFormat('en-US').format(amount)}</h2>
+              <button className='bg-[#ffffff] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-[#28a745] px-10 h-[52px]' onClick={handlePayment}>Proceed to Payment</button>
+            </div>
+          )
+        }
       </div>
     </div>
   )

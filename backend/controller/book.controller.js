@@ -55,23 +55,23 @@ export const bookaRide = async (req, res) => {
   // Save booking in database
   const booking = await prisma.book.create({
       data: {
-          fname,
-          email,
-          phoneNo,
-          age,
-          userId,
-          pickupLocation,
-          DropoffLocation,
-          amount: Math.round(amount),
-          date: new Date(),
-          time: new Date().toLocaleTimeString(),
+        fname,
+        email,
+        phoneNo,
+        age,
+        userId,
+        pickupLocation,
+        DropoffLocation,
+        amount: Math.round(amount),
+        date: new Date(),
+        time: new Date().toLocaleTimeString(),
       },
   });
 
   res.status(201).json({ success: true, message: 'Booking created. Proceed to payment.', booking });
   } catch (error) {
     console.log(error)
-    res.status(500).json({ success: false, message: "Failed to send text" });
+    res.status(500).json({ success: false, message: "Failed to book a car" });
   }
 }
 
