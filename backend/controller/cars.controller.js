@@ -144,7 +144,10 @@ export const calculatePrice = async (req, res) => {
     } else {
       return res.status(400).json({ success: false, message: "Invalid rental type or missing dates" });
     }
-
+    
+    if (!email || !fname || !time || !startDate || !endDate || !age || !phoneNo || !city || !rentalType) {
+      return res.status(400).json({ success: false, message: "Missing required fields" });
+    }
     // Store rental record
     const rent = await prisma.rent.create({
       data: {

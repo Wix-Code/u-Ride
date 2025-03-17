@@ -30,7 +30,7 @@ export const bookRide = async () => {
 }
 
 export const bookaRide = async (req, res) => {
-  const { fname, email, phoneNo, age, pickupLocation, DropoffLocation, pickupCoords, dropoffCoords } = req.body;
+  const { fname, email, phoneNo, age, date, time, pickupLocation, DropoffLocation, pickupCoords, dropoffCoords } = req.body;
   const userId = Number(req?.user?.id)
   if (!userId) {
     return res.status(404).json({ success: true, message: "Not authorised" });
@@ -50,8 +50,11 @@ export const bookaRide = async (req, res) => {
 
   const distanceInMeters = orsResponse.data.distances[0][1];
   const distanceInKm = distanceInMeters / 1000;
-  const amount = distanceInKm * 250; // Example: ₦250 per km
-
+    const amount = distanceInKm * 250; // Example: ₦250 per km
+    
+  if (!email || !fname || !time || !date  || !age || !phoneNo || !pickupLocation || !DropoffLocation) {
+    return res.status(400).json({ success: false, message: "Missing required fields" });
+  }
   // Save booking in database
   const booking = await prisma.book.create({
       data: {
