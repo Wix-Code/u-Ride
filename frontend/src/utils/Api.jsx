@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://u-ride.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
