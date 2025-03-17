@@ -1,6 +1,6 @@
 import { Prisma} from "@prisma/client";
 import prisma from "../utils/prisma.js";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import validator from "validator"
 import nodemailer from "nodemailer"
 import jwt from "jsonwebtoken"
