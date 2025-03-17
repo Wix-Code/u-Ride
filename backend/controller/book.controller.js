@@ -79,10 +79,6 @@ export const bookaRide = async (req, res) => {
 }
 
 export const getBookings = async (req, res) => {
-  /*const userId = Number(req?.user?.id)
-  if (!userId) {
-    return res.status(404).json({ success: true, message: "Not authorised" });
-  }*/
   try {
     const bookings = await prisma.book.findMany();
     res.status(200).json({ success: true, bookings });

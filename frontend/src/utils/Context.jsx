@@ -3,6 +3,7 @@ export const storeContext = createContext()
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import Api from './Api'
+import { toast } from 'react-toastify'
 const Context = (props) => {
   const navigate = useNavigate()
   const [carData, setCarData] = useState([])
@@ -42,9 +43,11 @@ const Context = (props) => {
         setToken(res.data.token); // Updates state
         localStorage.setItem("token", res.data.token); // Stores token in localStorage
         navigate("/");
+        toast.success("Logged in successfully")
       }
     } catch (error) {
       console.log(error)
+      toast.error(error.response?.data?.message || "Failed to register")
     }
   }
 

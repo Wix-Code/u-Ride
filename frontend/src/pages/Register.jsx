@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios"
 import Api from '../utils/Api'
+import { toast } from 'react-toastify'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -16,12 +17,19 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(userDetails)
-    const res = await Api.post("/auth/register", userDetails, {
-      withCredentials: true
-    })
-    console.log(res.data)
-    if (res.data) {
-      navigate("/login")
+    try {
+      const response = await Api.post("/auth/register", userDetails, {
+        withCredentials: true
+      })
+      toast(response.data.message)
+      console.log(response.data)
+      if (response?.data?.success === true) {
+        toast(response?.data?.message)
+        //navigate("/login")
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(error.response?.data?.message || "Failed to register")
     }
   }
   return (
@@ -30,7 +38,7 @@ const Register = () => {
       <h1 className='lg:text-[30px] sm:text-[20px] font-bold uppercase text-[#28a745] text-center'>Register</h1>
         <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-1'>
-          <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Email</label>
+          <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Username</label>
           <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type="text" name='name' onChange={handleChange} placeholder="Enter your name" required />
         </div>
         <div className='flex flex-col gap-1'>

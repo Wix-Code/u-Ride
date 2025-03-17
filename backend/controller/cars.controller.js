@@ -209,8 +209,29 @@ export const processPayment = async (req, res) => {
 
 export const verifyPayment = async (req, res) => {
   try {
-    
+    const { reference, rentId } = req.body;
+    if (!reference || !rentId) return res.status(400).json({ success: false, message: "Payment reference and Order ID are required" });
+
+    const response = await paystack.transaction.verify(reference);
+    if (!response?.data || response.data.status !== "success") {
+      return res.status(400).json({ success: false, message: "Payment verification failed", details: response?.data });
+    }
+
+    const updateOrder = await prisma.book.update({
+      where: { id: rentId },
+      data: {
+        paid: true,
+        status: "paid",
+        paymentReference: reference,
+        paidAt: new Date(),
+        paymentAmount: response.data.amount / 100,
+      }
+    });
+
+    if (!updateOrder) return res.status(404).json({ success: false, message: "Booking not found" });
+    res.status(200).json({ success: true, message: "Payment successful", booking: updateOrder });
   } catch (error) {
     console.log(error)
+    res.status(500).json({ success: false, message: "Failed to verify payment" });
   }
 }
