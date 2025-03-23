@@ -9,7 +9,7 @@ router.get("/", getCars)
 router.get("/:id", getCar)
 router.put("/:id", verifyToken, updateCar)
 router.delete("/:id", verifyToken, deleteCar)
-router.post("/calculate", verifyToken, calculatePrice)
-router.post("/process", verifyToken, processPayment)
+router.post("/calculate", calculatePrice)
+router.post("/process", processPayment)
 
 export default router
