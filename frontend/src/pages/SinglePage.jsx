@@ -86,7 +86,7 @@ const SinglePage = () => {
         {
           withCredentials: true,
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${toke}`,
           },
         }
       );
