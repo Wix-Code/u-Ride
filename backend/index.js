@@ -10,8 +10,9 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-  origin: /*ttp://localhost:5173",*/"https://u-ride-rust.vercel.app",
+  origin: ["https://u-ride-rust.vercel.app","http://localhost:5173"],
   credentials: true, // allow cookies to be sent over HTTP requests
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials'],
 }))
 
 app.use("/api/auth", authRoute)
