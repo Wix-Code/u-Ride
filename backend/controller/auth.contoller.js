@@ -67,13 +67,12 @@ export const login = async (req, res) => {
     const { password, ...others } = user;
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, { expiresIn: "7d" })
-    
 
     return res.cookie("accessToken", token,{
       httpOnly: true,  
-      secure: false,      
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", 
-      //maxAge: 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === "production",      
+      sameSite: "strict", 
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     }).status(201).json({ success: true, message: "Login successful", others, token });
   } catch (error) {
     console.log(error)
