@@ -238,16 +238,14 @@ const SinglePage = () => {
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Pickup Date</label>
               <input className='border-[1px] w-full lg:text-[16px] text-[#4f5050] sm:text-[14px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' name='startDate' onChange={handleInputChange} required />
             </div>
-            <div className='flex flex-col gap-2 w-full '>
+            {
+              carRent.rentalType === "multiDay" &&  <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>End Date Time</label>
               <input className='border-[1px] lg:text-[16px] text-[#4f5050] sm:text-[14px] sm:w-full focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='' onChange={handleInputChange} name='endDate' required />
             </div>
+           }
           </div>
           <div className='flex gap-2 lg:flex-row sm:flex-col'>
-            <div className='flex flex-col gap-2 w-full'>
-              <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Age</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} type='text' id='name' name=''  />
-            </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>City</label>
               <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' onChange={handleInputChange} type='text' name='city' required />
