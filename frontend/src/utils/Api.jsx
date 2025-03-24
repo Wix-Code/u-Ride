@@ -5,7 +5,7 @@ import axios from "axios";
 //console.log(token, "Api")
 
 const Api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://u-ride.onrender.com/api",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -16,3 +16,4 @@ const Api = axios.create({
 export default Api;
 
 //https://u-ride.onrender.com
+//http://localhost:5000/api
