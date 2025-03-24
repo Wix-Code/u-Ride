@@ -75,7 +75,7 @@ const SinglePage = () => {
       startDate: startDate ? startDate.toISOString() : null,
       endDate: endDate ? endDate.toISOString() : null,
       age: age,
-      userId
+      userId: userId
     };
 
     console.log(id, "user");

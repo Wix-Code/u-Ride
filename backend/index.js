@@ -9,8 +9,9 @@ import cors from "cors"
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
+const allowedOrigins = ["https://u-ride-rust.vercel.app","http://localhost:5173"];
 app.use(cors({
-  origin: ["https://u-ride-rust.vercel.app","http://localhost:5173"],
+  origin: allowedOrigins,
   credentials: true, // allow cookies to be sent over HTTP requests
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials'],
 }))

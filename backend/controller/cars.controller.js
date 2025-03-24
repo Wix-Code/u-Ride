@@ -145,7 +145,7 @@ export const calculatePrice = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid rental type or missing dates" });
     }
     
-    if (!email || !fname || !time || !startDate || !endDate || !age || !phoneNo || !city || !rentalType) {
+    if (!email || !fname || !time || !startDate || !age || !phoneNo || !city || !rentalType) {
       return res.status(400).json({ success: false, message: "Missing required fields" });
     }
     // Store rental record
