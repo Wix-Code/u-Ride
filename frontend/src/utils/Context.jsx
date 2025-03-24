@@ -27,6 +27,9 @@ const Context = (props) => {
   const handleChange = (e) => {
     setUserDetails({...userDetails, [e.target.name]: e.target.value })
   }
+  const user = JSON.parse(localStorage.getItem("token"));
+  const userId = user?.others?.id;
+  console.log(userId, "userId")
 
   useEffect(() => {
     console.log("Token updated:", token);
@@ -41,7 +44,7 @@ const Context = (props) => {
       })
       if (res.data.token) {
         setToken(res.data.token); // Updates state
-        localStorage.setItem("token", res.data.token); // Stores token in localStorage
+        localStorage.setItem("token", JSON.stringify(res.data)); // Stores token in localStorage
         navigate("/");
         toast.success("Logged in successfully")
       }

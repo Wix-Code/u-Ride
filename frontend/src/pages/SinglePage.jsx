@@ -9,7 +9,7 @@ const SinglePage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [car, setCar] = useState([])
-  const { token } = useContext(storeContext)
+  const { token, userId } = useContext(storeContext)
   const [amount, setAmount] = useState(null)
   const [rentData, setRentData] = useState(null)
 
@@ -75,7 +75,7 @@ const SinglePage = () => {
       startDate: startDate ? startDate.toISOString() : null,
       endDate: endDate ? endDate.toISOString() : null,
       age: age,
-      token
+      userId
     };
 
     console.log(id, "user");

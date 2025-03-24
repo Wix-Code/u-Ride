@@ -7,7 +7,7 @@ const router = express.Router()
 router.post("/book", verifyToken, bookRide)
 router.post("/", bookaRide)
 router.get("/", getBookings)
-router.post("/payment",  processBookingPayment)
-router.post("/verify",  verifyBookingPayment)
+router.post("/payment", verifyToken, processBookingPayment)
+router.post("/verify", verifyToken, verifyBookingPayment)
 
 export default router
