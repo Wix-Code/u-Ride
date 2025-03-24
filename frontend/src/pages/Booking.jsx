@@ -192,14 +192,13 @@ const Booking = () => {
             </div>
           </div>
         </div>
-        <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]' onClick={submit}>Submit Request</button>
         {
-          amount !== null && (
+          amount !== null ? (
             <div className='flex flex-col gap-2'>
               <h2 className='text-center font-bold lg:text-[24px] sm:text-[20px]'>Total Amount: &#8358;{new Intl.NumberFormat('en-US').format(amount)}</h2>
-              <button className='bg-[#ffffff] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-[#28a745] px-10 h-[52px]' onClick={handlePayment}>Proceed to Payment</button>
+              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-[#FFFFFF] px-10 h-[52px]' onClick={handlePayment}>Proceed to Payment</button>
             </div>
-          )
+          ) :  (<button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]' onClick={submit}>Submit Request</button>)
         }
       </div>
     </div>
