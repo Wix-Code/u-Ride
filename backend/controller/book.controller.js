@@ -88,7 +88,7 @@ export const getBookings = async (req, res) => {
   }
 }
 
-const url = "http://localhost:5173/"
+const url = "http://localhost:5173/" || "https://u-ride-rust.vercel.app"
 export const processBookingPayment = async (req, res) => {
   const { bookId } = req.body;
   const userId = Number(req?.user?.id);

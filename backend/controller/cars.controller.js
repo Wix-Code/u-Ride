@@ -148,7 +148,7 @@ export const calculatePrice = async (req, res) => {
     if (!email || !fname || !time || !startDate || !age || !phoneNo || !city || !rentalType) {
       return res.status(400).json({ success: false, message: "Missing required fields" });
     }
-    // Store rental record
+    // Store rental record 
     const rent = await prisma.rent.create({
       data: {
         userId,
@@ -174,7 +174,7 @@ export const calculatePrice = async (req, res) => {
   }
 };
 
-const url = "http://localhost:5173/"
+const url = "http://localhost:5173/" || "https://u-ride-rust.vercel.app"
 export const processPayment = async (req, res) => {
   const { rentId } = req.body;
   const userId = Number(req?.user?.id);
