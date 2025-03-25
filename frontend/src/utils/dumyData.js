@@ -64,20 +64,10 @@ export const links = [
     href: "/book",
   },
   {
-    id: 4,
-    title: "Logistics",
-    href: "/logistics",
-  },
-  {
     id: 5,
     title: "Contact",
     href: "/contact",
-  },
-  {
-    id: 6,
-    title: "Login",
-    href: "/login",
-  },
+  }
 ]
 
 export const cars = [

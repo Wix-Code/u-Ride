@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { links } from '../utils/dumyData'
 import { Link } from 'react-router-dom'
 import { FaBars } from "react-icons/fa"
 import ResponsiveNavBar from './ResponsiveNavBar'
+import { storeContext } from '../utils/Context'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
+  const { token } = useContext(storeContext)
   return (
     <div className='font-display sticky top-0 z-50 shadow-sm shadow-rgba(0, 0, 0, 0.1) 0px 4px 12px] bg-white w-[100%] sm:h-[80px] lg:h-[100px] justify-between flex items-center'>
       <div className='lg:ml-24 sm:ml-5'>
@@ -21,6 +23,12 @@ const Navbar = () => {
             )
           })
         }
+      </div>
+      <div className='mr-10 sm:hidden lg:flex'>
+      {
+        token ?
+        <button className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Logout</button> : <Link to="/login"><button  className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Login</button></Link>
+      }
       </div>
       <button className='lg:hidden sm:flex sm:mr-5' onClick={()=>setOpen(!open)}><FaBars /></button>{
         open &&

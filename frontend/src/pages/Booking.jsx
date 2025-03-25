@@ -1,13 +1,16 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Api from '../utils/Api'
 import { storeContext } from '../utils/Context';
 import axios from "axios"
+import AOS from "aos"
+import { toast } from 'react-toastify';
 
 const Booking = () => {
   const formRef = useRef(null);
   const [pickupCoords, setPickupCoords] = useState(null);
   const [dropoffCoords, setDropoffCoords] = useState(null);
   const [amount, setAmount] = useState(null);
+  const [loading, setLoading] = useState(false)
   const [bookData, setBookData] = useState(null);
   const { token } = useContext(storeContext)
   const [formData, setFormData] = useState({
@@ -25,6 +28,10 @@ const Booking = () => {
   const handleScrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value });
@@ -49,12 +56,19 @@ const Booking = () => {
  
   const submit = async (e) => { 
     e.preventDefault();
+    setLoading(true)
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userId = user?.id;
+    if (!token) {
+      toast.warn("Please log in to book a car");
+      return;
+    }
     console.log(formData)
     const pickup = await getCoordinates(formData.pickupLocation);
     const dropoff = await getCoordinates(formData.DropoffLocation);
 
     if (!pickup || !dropoff) {
-      alert("Please enter valid addresses");
+      toast.warn("Please enter valid addresses");
       return;
     }
 
@@ -65,6 +79,7 @@ const Booking = () => {
     try {
       const response = await Api.post("/book", {
         ...formData,
+        userId,
         age: age,
         pickupCoords: pickup,
         dropoffCoords: dropoff,
@@ -77,14 +92,22 @@ const Booking = () => {
       console.log(response.data)
       setAmount(response.data.booking.amount)    
       setBookData(response.data.booking)
+      setLoading(false)
     } catch (error) {
       console.log(error)
+      toast.error(error.response?.data?.message || "Failed to book a car")
+      setLoading(false)
     }
   }
   const handlePayment = async (e) => {
     e.preventDefault();
+    setLoading(true)
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userId = user?.id;
+
     try {
       const response = await Api.post("/book/payment", { 
+        userId,
         bookId: bookData.id, 
         email: bookData.email, 
         amount: amount 
@@ -101,8 +124,11 @@ const Booking = () => {
       } else {
         console.log(response.data.message);
       }
+      setLoading(false)
     } catch (error) {
       console.log(error)
+      toast.error(error.response?.data?.message || "Failed to complete payment")
+      setLoading(false);
     }
   }
   return (
@@ -120,13 +146,13 @@ const Booking = () => {
       <div className='flex items-center max-w-[1150px] lg:m-auto lg:flex-row lg:gap-8 sm:flex-col sm:gap-4 sm:mx-5'>
         <div className='flex flex-col lg:gap-5 sm:gap-3'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
-          <p className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Airport Transportation</p>
-          <p className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>We provide pick up and drop off and shuttle service to and from all major local airports in surrounding areas in one of our comfortable luxury sedans. We can assist you with airport transfers for stress-free travel and take you to all your desired destinations.</p>
+          <p data-aos="fade-right" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Airport Transportation</p>
+          <p data-aos="fade-right" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>We provide pick up and drop off and shuttle service to and from all major local airports in surrounding areas in one of our comfortable luxury sedans. We can assist you with airport transfers for stress-free travel and take you to all your desired destinations.</p>
         </div>
         <div className='flex flex-col gap-3'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
-          <p className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Flexible Rentals</p>
-          <p className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
+          <p data-aos="fade-left" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Flexible Rentals</p>
+          <p data-aos="fade-left" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
         </div>
       </div>
       <div className='bg-[#28a745] text-white text-center lg:px-52 lg:py-20 flex flex-col lg:gap-8 sm:px-5 sm:py-10 sm:gap-3'>
@@ -196,9 +222,9 @@ const Booking = () => {
           amount !== null ? (
             <div className='flex flex-col gap-2'>
               <h2 className='text-center font-bold lg:text-[24px] sm:text-[20px]'>Total Amount: &#8358;{new Intl.NumberFormat('en-US').format(amount)}</h2>
-              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-[#FFFFFF] px-10 h-[52px]' onClick={handlePayment}>Proceed to Payment</button>
+              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-[#FFFFFF] px-10 h-[52px]' onClick={handlePayment}>{loading ? "Processing..." : "Proceed to Payment" }</button>
             </div>
-          ) :  (<button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]' onClick={submit}>Submit Request</button>)
+          ) :  (<button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]' onClick={submit}>{ loading ? "Submitting..." : "Submit Request" }</button>)
         }
       </div>
     </div>

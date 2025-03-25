@@ -30,8 +30,8 @@ export const bookRide = async () => {
 }
 
 export const bookaRide = async (req, res) => {
-  const { fname, email, phoneNo, age, date, time, pickupLocation, DropoffLocation, pickupCoords, dropoffCoords } = req.body;
-  const userId = Number(req?.user?.id)
+  const { userId, fname, email, phoneNo, age, date, time, pickupLocation, DropoffLocation, pickupCoords, dropoffCoords } = req.body;
+  //const userId = Number(req?.user?.id)
   if (!userId) {
     return res.status(404).json({ success: true, message: "Not authorised" });
   }
@@ -90,8 +90,8 @@ export const getBookings = async (req, res) => {
 
 const url = "http://localhost:5173/" || "https://u-ride-rust.vercel.app"
 export const processBookingPayment = async (req, res) => {
-  const { bookId } = req.body;
-  const userId = Number(req?.user?.id);
+  const { bookId, userId} = req.body;
+  //const userId = Number(req?.user?.id);
   if (!userId) {
     return res.status(401).json({ success: false, message: "Not authorized" });
   }

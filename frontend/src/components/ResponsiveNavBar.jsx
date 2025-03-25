@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { links } from '../utils/dumyData'
+import { Link } from 'react-router-dom'
+import { storeContext } from '../utils/Context'
 
 const ResponsiveNavBar = () => {
+  const { token } = useContext(storeContext)
+  
   return (
     <div className='bg-white w-full h-[100vh]'>
       {
@@ -13,6 +17,12 @@ const ResponsiveNavBar = () => {
           )
         })
       }
+      <div className=' sm:flex lg:hidden justify-center'>
+      {
+        token ?
+        <button className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Logout</button> : <Link to="/login"><button  className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Login</button></Link>
+      }
+      </div>
     </div>
   )
 }
