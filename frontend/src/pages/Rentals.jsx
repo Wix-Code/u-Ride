@@ -28,16 +28,16 @@ const Rentals = () => {
         <p className='font-extrabold uppercase text-[#1d274e]'>What we do</p>
         <p className='text-center lg:text-[16px] sm:text-[12px] font-medium mt-5 text-[#343a40]'>U-RIDE Luxury Car Rentals with Chauffeur gets you to your destination promptly and comfortably. Our experienced staff offers personalized and professional assistance that enhances any celebration or corporate event. You can rely on a clean picture perfect condition vehicle waiting for you for special occasions and corporate ground transportation.</p>
       </div>
-      <div className='flex items-center max-w-[1150px] lg:m-auto lg:flex-row lg:gap-8 sm:flex-col sm:gap-4 sm:mx-5'>
+      <div className='flex items-center max-w-[1150px] lg:m-auto lg:flex-row lg:gap-8 sm:flex-col sm:gap-4 sm:mx-5 overflow-hidden'>
         <div className='flex flex-col lg:gap-5 sm:gap-3'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
           <p data-aos="fade-right" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Airport Transportation</p>
           <p data-aos="fade-right" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>We provide pick up and drop off and shuttle service to and from all major local airports in surrounding areas in one of our comfortable luxury sedans. We can assist you with airport transfers for stress-free travel and take you to all your desired destinations.</p>
         </div>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 overflow-hidden'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
           <p data-aos="fade-left" data-aos-delay="100" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Flexible Rentals</p>
-          <p data-aos="fade-left" data-aos-delay="500" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
+          <p data-aos="fade-left" data-aos-delay="500" className='text-[#343a40] sm:text-[14px] lg:text-[16px] overflow-hidden'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
         </div>
       </div>
       <div className='bg-[#28a745] text-white text-center lg:px-52 lg:py-20 flex flex-col lg:gap-8 sm:px-5 sm:py-10 sm:gap-3'>

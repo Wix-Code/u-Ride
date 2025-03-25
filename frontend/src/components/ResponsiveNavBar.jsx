@@ -7,7 +7,7 @@ const ResponsiveNavBar = () => {
   const { token } = useContext(storeContext)
   
   return (
-    <div className='bg-white w-full h-[100vh]'>
+    <div className='bg-white w-full h-[100vh] lg:hidden sm:flex sm:flex-col'>
       {
         links.map((link) => {
           return (

@@ -144,12 +144,12 @@ const Booking = () => {
         <p className='text-center lg:text-[16px] sm:text-[12px] font-medium mt-5 text-[#343a40]'>U-RIDE Luxury Car Rentals with Chauffeur gets you to your destination promptly and comfortably. Our experienced staff offers personalized and professional assistance that enhances any celebration or corporate event. You can rely on a clean picture perfect condition vehicle waiting for you for special occasions and corporate ground transportation.</p>
       </div>
       <div className='flex items-center max-w-[1150px] lg:m-auto lg:flex-row lg:gap-8 sm:flex-col sm:gap-4 sm:mx-5'>
-        <div className='flex flex-col lg:gap-5 sm:gap-3'>
+        <div className='flex flex-col lg:gap-5 sm:gap-3 overflow-hidden'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
           <p data-aos="fade-right" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Airport Transportation</p>
           <p data-aos="fade-right" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>We provide pick up and drop off and shuttle service to and from all major local airports in surrounding areas in one of our comfortable luxury sedans. We can assist you with airport transfers for stress-free travel and take you to all your desired destinations.</p>
         </div>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 overflow-hidden'>
           <img src="https://mlszn6rjkywy.i.optimole.com/w:1035/h:741/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/06/Nairaxi-Luxury-chauffeur-Hire-a-car-in-Abuja.jpg" alt="" />
           <p data-aos="fade-left" className='text-[#1d274e] font-bold sm:text-[18px] lg:text-[24px]'>Flexible Rentals</p>
           <p data-aos="fade-left" className='text-[#343a40] sm:text-[14px] lg:text-[16px]'>Get your private transportation service for your special event such as your wedding day, corporate, night out on the town, bachelor/bachelorette party, concert, and more. We also provide high-quality private car service for your business meetings or corporate affairs.</p>
@@ -157,7 +157,7 @@ const Booking = () => {
       </div>
       <div className='bg-[#28a745] text-white text-center lg:px-52 lg:py-20 flex flex-col lg:gap-8 sm:px-5 sm:py-10 sm:gap-3'>
         <p className='lg:text-[22px] sm:text-[16px] font-medium'>RIDE IN STYLE</p>
-        <h1 className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
+        <h1  data-aos="fade-up" className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
       <div ref={formRef} className='lg:max-w-[800px] sm:mx-5 lg:m-auto flex flex-col sm:gap-2 lg:gap-4 border-[1px] border-[#dddddd] lg:p-10 sm:p-5'>
