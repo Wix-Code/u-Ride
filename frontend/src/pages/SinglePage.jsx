@@ -89,9 +89,9 @@ const SinglePage = () => {
         updatedCarRent,
         {
           withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${toke}`,
-          },
+          /*headers: {
+            Authorization: `Bearer ${token}`,
+          },*/
         }
       );
       console.log(response.data);
@@ -115,9 +115,9 @@ const SinglePage = () => {
         price: amount 
       }, {
         withCredentials: true,
-        headers: {
+        /*headers: {
           Authorization: `Bearer ${token}`,
-        },
+        },*/
       })
       console.log(response)
       if (response.data.data.status === true) {
