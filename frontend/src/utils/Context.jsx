@@ -45,7 +45,7 @@ const Context = (props) => {
         withCredentials: true
       })
       if (res.data.token) {
-        setToken(res.data.token); // Updates state
+        setToken(res?.data?.token); // Updates state
         localStorage.setItem("token", res.data.token); // Stores token in localStorage
         navigate("/");
         toast.success("Logged in successfully")
