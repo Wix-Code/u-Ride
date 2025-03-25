@@ -8,6 +8,7 @@ const Context = (props) => {
   const navigate = useNavigate()
   const [carData, setCarData] = useState([])
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [loading, setLoading] = useState(false)
   const [userDetails, setUserDetails] = useState({
     email: '',
     password: ''
@@ -38,6 +39,7 @@ const Context = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      setLoading(true)
       console.log(userDetails)
       const res = await Api.post("/auth/login", userDetails, {
         withCredentials: true
@@ -48,9 +50,11 @@ const Context = (props) => {
         navigate("/");
         toast.success("Logged in successfully")
       }
+      setLoading(false)
     } catch (error) {
       console.log(error)
       toast.error(error.response?.data?.message || "Failed to register")
+      setLoading(false)
     }
   }
 
@@ -77,6 +81,7 @@ const Context = (props) => {
     carRent,
     setCarRent,
     handleChange,
+    loading,
     carData,
     token,
     handleSubmit

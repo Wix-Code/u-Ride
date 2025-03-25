@@ -12,6 +12,8 @@ const SinglePage = () => {
   const { token } = useContext(storeContext)
   const [amount, setAmount] = useState(null)
   const [rentData, setRentData] = useState(null)
+  const [loading, setLoading] = useState(false)
+
 
   console.log(token)
   
@@ -48,7 +50,7 @@ const SinglePage = () => {
     const toke = localStorage.getItem("token");
     console.log(toke, "toke")
     if (!toke) {
-      alert("Please log in to book a car");
+      toast.warn("Please log in to book a car");
       navigate('/login');
       return;
     }
@@ -81,6 +83,7 @@ const SinglePage = () => {
     console.log(id, "user");
 
     try {
+      setLoading(true)
       const response = await Api.post(
         `cars/calculate`,
         updatedCarRent,
@@ -94,15 +97,18 @@ const SinglePage = () => {
       console.log(response.data);
       setAmount(response.data.totalPrice);
       setRentData(response.data.rent);
+      setLoading(false)
     } catch (error) {
       console.log(error);
       toast.error(error.response?.data?.message || "Failed to rent a car")
+      setLoading(false)
     }
   };
 
   const handlePayment = async (e) => {
     e.preventDefault();
     try {
+      setLoading(false)
       const response = await Api.post("/cars/process", { 
         rentId: rentData.id, 
         email: rentData.email, 
@@ -120,8 +126,11 @@ const SinglePage = () => {
       } else {
         console.log(response.data.message);
       }
+      setLoading(false)
     } catch (error) {
       console.log(error)
+      toast.error(error.response?.data?.message || "Failed to make payment")
+      setLoading(false)
     }
   }
   return (
@@ -256,9 +265,9 @@ const SinglePage = () => {
           amount !== null ? (
             <div className='flex flex-col gap-2'>
               <h2 className='text-center font-bold lg:text-[24px] sm:text-[20px]'>Total Amount: &#8358;{new Intl.NumberFormat('en-US').format(amount)}</h2>
-              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-white px-10 h-[52px]' onClick={handlePayment}>Proceed to Payment</button>
+              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-white px-10 h-[52px]' onClick={handlePayment}>{loading ? "Processing" : "Proceed to Payment"}</button>
             </div>
-          ):<button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Submit Request</button>
+          ) : <button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{ loading ? "Submitting" : "Submit Request" }</button>
         }
       </div>
     </div>

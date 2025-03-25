@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 const Register = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
   const [userDetails, setUserDetails] = useState({
     name: '',
     email: '',
@@ -18,6 +19,7 @@ const Register = () => {
     e.preventDefault()
     console.log(userDetails)
     try {
+      setLoading(true)
       const response = await Api.post("/auth/register", userDetails, {
         withCredentials: true
       })
@@ -26,9 +28,11 @@ const Register = () => {
         toast(response?.data?.message)
         navigate("/login")
       }
+      setLoading(false)
     } catch (error) {
       console.log(error)
       toast.error(error.response?.data?.message || "Failed to register")
+      setLoading(false)
     }
   }
   return (
@@ -52,7 +56,7 @@ const Register = () => {
           <p className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Already have an account?</p>
           <Link to="/login"><span className='lg:text-[16px] text-[#4f5050] sm:text-[14px] hover:text-[#28a745]'>Login</span></Link>
         </div>
-        <button type='submit' className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Sign up</button>
+          <button type='submit' className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{loading ? "Signing up" : "Sign up"}</button>
         <button className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Signup with Google</button>
       </form>
     </div>
