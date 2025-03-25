@@ -13,9 +13,11 @@ const SinglePage = () => {
   const [amount, setAmount] = useState(null)
   const [rentData, setRentData] = useState(null)
   const [loading, setLoading] = useState(false)
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user?.id;
 
   console.log(token)
+  console.log(userId, "user")
   
   const [carRent, setCarRent] = useState({
     city: "",
@@ -28,7 +30,7 @@ const SinglePage = () => {
     startDate: "",
     endDate: "",
   })
- console.log(id)
+ console.log(id, "id")
   useEffect(() => {
     const fetch = async () => {
       const response = await Api.get(`/cars/${id}`, {
@@ -77,7 +79,7 @@ const SinglePage = () => {
       startDate: startDate ? startDate.toISOString() : null,
       endDate: endDate ? endDate.toISOString() : null,
       age: age,
-      //userId: userId
+      userId: userId
     };
 
     console.log(id, "user");
