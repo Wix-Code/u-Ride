@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { storeContext } from '../utils/Context'
 
 const ResponsiveNavBar = () => {
-  const { token } = useContext(storeContext)
+  const { token, clearDetails } = useContext(storeContext)
   
   return (
     <div className='bg-white w-full h-[100vh] lg:hidden sm:flex sm:flex-col'>
@@ -20,7 +20,7 @@ const ResponsiveNavBar = () => {
       <div className=' sm:flex lg:hidden justify-center'>
       {
         token ?
-        <button className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Logout</button> : <Link to="/login"><button  className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Login</button></Link>
+        <button className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]' onClick={clearDetails}>Logout</button> : <Link to="/login"><button  className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Login</button></Link>
       }
       </div>
     </div>

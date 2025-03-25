@@ -59,7 +59,11 @@ const Context = (props) => {
     }
   }
 
- 
+  const clearDetails = () => {
+    localStorage.removeItem('token'),
+    localStorage.removeItem('user'),
+    setToken(null)
+  }
   
   const fetchData = async () => {
     try {
@@ -85,6 +89,7 @@ const Context = (props) => {
     loading,
     userId,
     carData,
+    clearDetails,
     token,
     handleSubmit
   }
