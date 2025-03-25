@@ -100,8 +100,8 @@ export const deleteCar = async (req, res) => {
 }
 
 export const calculatePrice = async (req, res) => { 
-  const { id, email, fname, time, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
-  const userId = Number(req?.user?.id);
+  const {userId, id, email, fname, time, startDate, endDate, age, phoneNo, city, rentalType } = req.body;
+  //const userId = Number(req?.user?.id);
 
   if (!userId) {
     return res.status(401).json({ success: false, message: "Not authorized" });
@@ -176,8 +176,8 @@ export const calculatePrice = async (req, res) => {
 
 const url = "http://localhost:5173/" || "https://u-ride-rust.vercel.app"
 export const processPayment = async (req, res) => {
-  const { rentId } = req.body;
-  const userId = Number(req?.user?.id);
+  const {userId, rentId } = req.body;
+  //const userId = Number(req?.user?.id);
   if (!userId) {
     return res.status(401).json({ success: false, message: "Not authorized" });
   }
