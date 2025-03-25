@@ -9,12 +9,12 @@ const SinglePage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [car, setCar] = useState([])
-  const { token } = useContext(storeContext)
+  const { token, userId } = useContext(storeContext)
   const [amount, setAmount] = useState(null)
   const [rentData, setRentData] = useState(null)
   const [loading, setLoading] = useState(false)
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user?.id;
+  //const user = JSON.parse(localStorage.getItem("user"));
+  //const userId = user?.id;
 
   console.log(token)
   console.log(userId, "user")
