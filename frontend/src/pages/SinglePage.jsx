@@ -56,6 +56,8 @@ const SinglePage = () => {
       navigate('/login');
       return;
     }
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userId = user?.id;
 
     console.log(carRent);
 
@@ -79,7 +81,7 @@ const SinglePage = () => {
       startDate: startDate ? startDate.toISOString() : null,
       endDate: endDate ? endDate.toISOString() : null,
       age: age,
-      userId: userId
+      userId
     };
 
     console.log(id, "user");
@@ -109,9 +111,13 @@ const SinglePage = () => {
 
   const handlePayment = async (e) => {
     e.preventDefault();
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userId = user?.id;
+
     try {
       setLoading(false)
       const response = await Api.post("/cars/process", { 
+        userId,
         rentId: rentData.id, 
         email: rentData.email, 
         price: amount 
