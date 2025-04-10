@@ -12,9 +12,10 @@ import ForgotPassword from './pages/ForgotPassword'
 import ResetPasssword from './pages/ResetPasssword'
 import { Suspense } from 'react'
 import Loader from './utils/Loader'
+import Rentals from './pages/Rentals'
 
 
-const Rentals = lazy(() => import("./pages/Rentals"))
+//const Rentals = lazy(() => import("./pages/Rentals"))
 const SinglePage = lazy(() => import("./pages/SinglePage"))
 const Home = lazy(() => import("./pages/Home"))
 //const Home = lazy(() => import("./pages/Home"))
