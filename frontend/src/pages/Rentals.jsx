@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Rentals = () => {
   const formRef = useRef(null);
-  const { carData } = useContext(storeContext)
+  const { carData, loading } = useContext(storeContext)
 
   const handleScrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -16,6 +16,14 @@ const Rentals = () => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  if (loading) {
+    return (
+      <div className='h-[80vh] flex justify-center items-center'>
+        <img src="https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg" alt="" />
+      </div>
+    )
+  }
   return (
     <div className='font-display flex flex-col sm:gap-10 lg:gap-20'>
       <div className='lg:h-[75vh] sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
