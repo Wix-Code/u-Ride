@@ -33,6 +33,7 @@ const Register = () => {
       console.log(error)
       toast.error(error.response?.data?.message || "Failed to register")
       setLoading(false)
+      setUserDetails("")
     }
   }
   return (
@@ -56,8 +57,7 @@ const Register = () => {
           <p className='lg:text-[16px] text-[#4f5050] sm:text-[14px]'>Already have an account?</p>
           <Link to="/login"><span className='lg:text-[16px] text-[#4f5050] sm:text-[14px] hover:text-[#28a745]'>Login</span></Link>
         </div>
-          <button type='submit' className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{loading ? "Signing up" : "Sign up"}</button>
-        <button className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Signup with Google</button>
+          <button type='submit' className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{loading ? <span className='blink'>Signing up</span> : "Sign up"}</button>
       </form>
     </div>
   </div>

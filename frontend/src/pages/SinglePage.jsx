@@ -273,9 +273,9 @@ const SinglePage = () => {
           amount !== null ? (
             <div className='flex flex-col gap-2'>
               <h2 className='text-center font-bold lg:text-[24px] sm:text-[20px]'>Total Amount: &#8358;{new Intl.NumberFormat('en-US').format(amount)}</h2>
-              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-white px-10 h-[52px]' onClick={handlePayment}>{loading ? "Processing" : "Proceed to Payment"}</button>
+              <button className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase border-[1px] border-[#28a745] text-white px-10 h-[52px]' onClick={handlePayment}>{loading ? <span className='blink'>Processing</span> : "Proceed to Payment"}</button>
             </div>
-          ) : <button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{ loading ? "Submitting" : "Submit Request" }</button>
+          ) : <button onClick={submitDetails} className='bg-[#28a745] mt-5 cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{ loading ? <span className='blink'>Submitting</span> : "Submit Request" }</button>
         }
       </div>
     </div>

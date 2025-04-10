@@ -21,8 +21,7 @@ const Login = () => {
             <Link to="/register"><p className='lg:text-[16px] hover:text-[#28a745] text-[#4f5050] sm:text-[14px]'>Register</p></Link>
             <Link to="/forgot"><span className='lg:text-[16px] text-[#4f5050] sm:text-[14px] hover:text-[#28a745]'>Forgot Password?</span></Link>
           </div>
-          <button type='submit' className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{ loading ? "Logging in" : "Login"}</button>
-          <button className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>Login with Google</button>
+          <button type='submit' className='bg-[#28a745] w-full cursor-pointer text-[16px] uppercase text-white px-10 h-[52px]'>{ loading ? <span className='blink'>Logging in</span>  : "Login"}</button>
         </form>
       </div>
     </div>

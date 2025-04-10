@@ -55,6 +55,10 @@ const Context = (props) => {
     } catch (error) {
       console.log(error)
       toast.error(error.response?.data?.message || "Failed to register")
+      setUserDetails({
+        email: "",
+        password: ""
+      });
       setLoading(false)
     }
   }
