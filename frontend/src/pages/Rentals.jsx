@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Rentals = () => {
   const formRef = useRef(null);
-  const { carData, loading } = useContext(storeContext)
+  const { carData } = useContext(storeContext)
 
   const handleScrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -17,13 +17,13 @@ const Rentals = () => {
     AOS.refresh();
   }, []);
 
-  if (loading) {
+  /*if (loading) {
     return (
       <div className='h-[80vh] flex justify-center items-center'>
         <img src="https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg" alt="" />
       </div>
     )
-  }
+  }*/
   return (
     <div className='font-display flex flex-col sm:gap-10 lg:gap-20'>
       <div className='lg:h-[75vh] sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
@@ -53,24 +53,23 @@ const Rentals = () => {
         <h1 data-aos="fade-up" data-aos-delay="100" className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
-      <div ref={formRef} className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
-        {
-          carData.map((car) => {
-            return (
-              <div data-aos="fade-up" key={car.id} className='flex gap-2 flex-col items-center'>
-                <p className='text-[#343a40] sm:text-[10px] lg:text-[12px] uppercase'>{car.type}</p>
-                <img src={car.image} className='' alt={car.name} />
-                <h2 className='text-[#1d274e] sm:text-center font-bold sm:text-[16px] lg:text-[20px]'>{car.name}</h2>
-                
-                <Link to={`/${car.id}`}><button className='py-1 bg-white border-[2px] sm:px-2 lg:px-4 border-[#28a745] lg:text-[14px] sm:text-[10px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button></Link>
-              </div>
-            )
-          })
-        }
-      </div>
-      <div>
-        
-      </div>
+       <div ref={formRef} className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
+          {
+            carData.map((car) => {
+              return (
+                <div>
+                  <div data-aos="fade-up" key={car.id} className='flex gap-2 flex-col items-center'>
+                    <p className='text-[#343a40] sm:text-[10px] lg:text-[12px] uppercase'>{car.type}</p>
+                    <img src={car.image} className='' alt={car.name} />
+                    <h2 className='text-[#1d274e] sm:text-center font-bold sm:text-[16px] lg:text-[20px]'>{car.name}</h2>
+                    
+                    <Link to={`/${car.id}`}><button className='py-1 bg-white border-[2px] sm:px-2 lg:px-4 border-[#28a745] lg:text-[14px] sm:text-[10px] font-normal text-[#28a745] hover:bg-[#28a745] hover:text-white transition-all duration-[0.5s] cursor-pointer'>Book Now</button></Link>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
       <div className='flex flex-col justify-center items-center sm:gap-3 lg:gap-5 lg:mx-0  sm:mx-5'>
         <img src="https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg" width={650} alt='' />
         <h1 className='lg:text-[24px] sm:text-[18px] font-bold text-[#1d274e]'>Luxury Car Rentals with Chauffeur</h1>

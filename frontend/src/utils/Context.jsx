@@ -71,14 +71,15 @@ const Context = (props) => {
   
   const fetchData = async () => {
     try {
-      setLoading(true)
+     // setLoading(true)
       const res = await Api.get("/cars", {
         withCredentials: false
       });
       setCarData(res.data.cars)
-      setLoading(false)
+     // setLoading(false)
     } catch (error) {
       console.log(error)
+      //setLoading(false)
     }
   }
   useEffect(() => {
