@@ -18,13 +18,6 @@ const Rentals = () => {
     AOS.refresh();
   }, []);
 
-  /*if (loading) {
-    return (
-      <div className='h-[80vh] flex justify-center items-center'>
-        <img src="https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg" alt="" />
-      </div>
-    )
-  }*/
   return (
     <div className='font-display flex flex-col sm:gap-10 lg:gap-20'>
       <div className='lg:h-[75vh] sm:h-[60vh] mt-5 flex justify-center flex-col gap-3 items-center bg-cover bg-center bg-[url("https://mlszn6rjkywy.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2024/04/NAIRAXI-luxury-car-rentals-with-chauffeur-vip.jpg")]'> 
@@ -54,7 +47,7 @@ const Rentals = () => {
         <h1 data-aos="fade-up" data-aos-delay="100" className='font-extrabold sm:text-[24px] lg:text-[50px]'>Comfort. Prompt. Professional</h1>
         <p className='lg:text-[22px] font-medium sm:leading-5 lg:leading-10 sm:text-[14px]'>Included in all transportation services are one (1) uniformed driver, complimentary water, WIFI, charging and complimentary snacks. Driver will be present at the pickup location fifteen (15) minutes before scheduled pickup time.</p>
       </div>
-      <div>
+      <div ref={formRef}>
         {
           loading ? (<Loader />) : (
             <div ref={formRef} className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
