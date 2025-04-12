@@ -27,6 +27,7 @@ const Contact = () => {
             <label className='text-[17px] text-gray-600' htmlFor="">Message</label>
             <textarea className='border-[1px] text-[17px] text-gray-600 outline-hidden border-gray-300 px-3 py-3' type="subject" placeholder='Enter your message' />
           </div>
+          <button className='py-5 px-3 text-white text-[17px] cursor-pointer bg-[#28a745]'>Submit</button>
         </div>
         <div className='flex-1'>
           <img className='w-full' src="https://mlszn6rjkywy.i.optimole.com/w:400/h:298/q:mauto/f:best/https://nairaxi.ng/wp-content/uploads/2020/10/customer-service-1.png" alt="" />

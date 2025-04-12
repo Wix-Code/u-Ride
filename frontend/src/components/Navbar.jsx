@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { links } from '../utils/dumyData'
-import { Link } from 'react-router-dom'
+import { Link, useLocation} from 'react-router-dom'
 import { FaBars } from "react-icons/fa"
 import ResponsiveNavBar from './ResponsiveNavBar'
 import { storeContext } from '../utils/Context'
@@ -8,6 +8,8 @@ import { storeContext } from '../utils/Context'
 const Navbar = () => {
   const [open, setOpen] = useState(false)
   const { token, clearDetails } = useContext(storeContext)
+  const location = useLocation();
+  const pathname = location.pathname
 
   return (
     <div className='font-display sticky top-0 z-50 shadow-sm shadow-rgba(0, 0, 0, 0.1) 0px 4px 12px] bg-white lg:max-w-[1100px]  m-auto sm:h-[80px] lg:h-[100px] justify-between flex items-center'>
@@ -19,7 +21,9 @@ const Navbar = () => {
           links.map((link) => {
             return (
               <div key={link.id}>
-                <Link to={link.href} className='text-[#28a745] uppercase font-bold px-4 py-2 text-[16px] hover:text-[#1d274e]'>{link.title}</Link>
+                <Link to={link.href} className={`uppercase font-bold px-4 py-2 text-[16px] hover:text-[#1d274e] ${
+        pathname === link.href ?  'text-[#1d274e]' : 'text-[#28a745]'
+      }`}>{link.title}</Link>
               </div>
             )
           })
