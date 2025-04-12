@@ -13,7 +13,7 @@ const ResponsiveNavBar = () => {
       {
         links.map((link) => {
           return (
-            <div key={link.id} className='flex items-center justify-center px-5 py-3'>
+            <div key={link.id} className='flex border-b-[1px] border-b-[#28a745] items-center justify-center px-5 py-3'>
               <a href={link.href} className={`uppercase font-bold hover:duration-[0.5s] hover:translate-x-2 hover:transform px-4 py-2 text-[16px] hover:text-[#1d274e] ${
         pathname === link.href ?  'text-[#1d274e]' : 'text-[#28a745]'
       }`}>{link.title}</a>
@@ -21,7 +21,7 @@ const ResponsiveNavBar = () => {
           )
         })
       }
-      <div className=' sm:flex lg:hidden justify-center'>
+      <div className='sm:flex sm:mt-4 lg:hidden justify-center'>
       {
         token ?
         <button className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]' onClick={clearDetails}>Logout</button> : <Link to="/login"><button  className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Login</button></Link>
