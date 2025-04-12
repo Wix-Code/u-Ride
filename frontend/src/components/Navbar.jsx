@@ -21,7 +21,7 @@ const Navbar = () => {
           links.map((link) => {
             return (
               <div key={link.id}>
-                <Link to={link.href} className={`uppercase font-bold px-4 py-2 text-[16px] hover:text-[#1d274e] ${
+                <Link to={link.href} className={`uppercase hover:duration-[0.5s] transform font-bold px-4 py-2 text-[16px] hover:text-[#1d274e] ${
         pathname === link.href ?  'text-[#1d274e]' : 'text-[#28a745]'
       }`}>{link.title}</Link>
               </div>

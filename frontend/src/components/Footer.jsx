@@ -1,11 +1,13 @@
 import React from 'react'
 import { links } from '../utils/dumyData'
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { FaPhone } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 
 const Footer = () => {
+  const location = useLocation()
+  const pathname = location.pathname;
   return (
     <div className='mt-32 font-display'>
       <div className='flex justify-between lg:flex-row max-w-[1000px] sm:flex-col sm:gap-3 lg:gap-5 lg:m-auto sm:mx-6'>
@@ -16,7 +18,9 @@ const Footer = () => {
               links.map((link) => {
                 return (
                   <div key={link.id} className='my-2'>
-                    <Link to={link.href}><p className='hover:text-[#28a745] hover:duration-[0.5s] hover:translate-x-2 hover:transform'>{link.title}</p></Link>
+                    <Link to={link.href}><p className={`uppercase hover:duration-[0.5s] transform font-normal px-4 py-2 text-[14px] hover:text-[#1d274e] ${
+        pathname === link.href ?  'text-[#1d274e]' : 'text-[#28a745]'
+      }`}>{link.title}</p></Link>
                   </div>
                 )
               })
