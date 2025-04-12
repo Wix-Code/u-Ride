@@ -9,7 +9,7 @@ const ResponsiveNavBar = () => {
   const pathname = location.pathname
   
   return (
-    <div className='bg-white w-full h-[100vh] lg:hidden sm:flex sm:flex-col'>
+    <div className='bg-white w-full h-[100vh] border-t-[1px] border-t-[#28a745]  lg:hidden sm:flex sm:flex-col'>
       {
         links.map((link) => {
           return (
@@ -21,7 +21,7 @@ const ResponsiveNavBar = () => {
           )
         })
       }
-      <div className='sm:flex sm:mt-4 lg:hidden justify-center'>
+      <div className='sm:flex sm:mt-4 pb-4 lg:hidden border-b-[1px]  border-b-[#28a745] justify-center'>
       {
         token ?
         <button className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]' onClick={clearDetails}>Logout</button> : <Link to="/login"><button  className='px-4 py-2 text-[16px] uppercase text-white font-bold bg-[#28a745] hover:bg-[#1d274e]'>Login</button></Link>
