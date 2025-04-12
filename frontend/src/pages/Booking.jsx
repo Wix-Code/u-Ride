@@ -214,7 +214,7 @@ const Booking = () => {
             </div>
             <div className='flex flex-col gap-2 w-full '>
               <label className='lg:text-[16px] text-[#4f5050] sm:text-[14px]' htmlFor='name'>Date</label>
-              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] h-[52px]' type='date' id='name' onChange={handleInputChange} name='date' required />
+              <input className='border-[1px] focus:border-[#28a745] outline-none px-5 border-[#dddddd] w-full h-[52px]' type='date' id='name' onChange={handleInputChange} name='date' required />
             </div>
           </div>
         </div>
