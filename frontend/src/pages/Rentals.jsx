@@ -49,7 +49,7 @@ const Rentals = () => {
       </div>
       <div ref={formRef}>
         {
-          loading ? (<Loader />) : (
+          loading ? (<Loader ref={formRef} />) : (
             <div ref={formRef} className='grid lg:grid-cols-4 lg:gap-20 lg:max-w-[1100px] lg:m-auto sm:grid-cols-2 sm:gap-3 sm:mx-5'>
             {
               carData.map((car) => {
