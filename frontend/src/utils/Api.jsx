@@ -5,7 +5,7 @@ import axios from "axios";
 //console.log(token, "Api")
 
 const Api = axios.create({
-  baseURL: "https://u-ride.onrender.com/api",
+  baseURL: "https://u-ride-1.onrender.com/api",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
