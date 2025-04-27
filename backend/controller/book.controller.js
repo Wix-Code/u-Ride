@@ -111,7 +111,7 @@ export const processBookingPayment = async (req, res) => {
       email: book.email,
       amount: Math.round(book.amount * 100),
       currency: "NGN",
-      callback_url: `${url}/verify?orderId=${bookId}`,
+      callback_url: "https://u-ride-rust.vercel.app",
     });
     
     res.status(200).json({ success: true, message: "Payment initialized successfully", data: response });

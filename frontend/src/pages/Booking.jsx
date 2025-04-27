@@ -110,7 +110,8 @@ const Booking = () => {
         userId,
         bookId: bookData.id, 
         email: bookData.email, 
-        amount: amount 
+        amount: amount,
+        callback_url: "https://u-ride-rust.vercel.app",
       }, {
         withCredentials: true,
         headers: {
