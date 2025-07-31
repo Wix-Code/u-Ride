@@ -120,7 +120,8 @@ const SinglePage = () => {
         userId,
         rentId: rentData.id, 
         email: rentData.email, 
-        price: amount 
+        price: amount,
+        callback_url: "https://u-ride-rust.vercel.app",
       }, {
         withCredentials: true,
         headers: {
